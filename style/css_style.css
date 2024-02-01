@@ -1,0 +1,284 @@
+/* Remove the display flex and other styles that center everything in the body, 
+   which might be causing the navbar to display incorrectly */
+html,
+body {
+    height: 100%;
+    /* Full height of the viewport */
+    width: 100%;
+    /* Full width of the viewport */
+    margin: 0;
+    /* Reset default margin */
+    padding: 0;
+    /* Reset default padding */
+    overflow-x: hidden;
+    /* Prevents horizontal scrollbar */
+}
+
+@font-face {
+    font-family: 'Rocher';
+    src: url('https://assets.codepen.io/9632/RocherColorGX.woff2') format('woff2');
+}
+
+@font-palette-values --Grays {
+    font-family: Rocher;
+    base-palette: 9;
+}
+
+@font-palette-values --Purples {
+    font-family: Rocher;
+    base-palette: 6;
+}
+
+@font-palette-values --Mint {
+    font-family: Rocher;
+    base-palette: 7;
+}
+
+.grays {
+    font-palette: --Grays;
+}
+
+.purples {
+    font-palette: --Purples;
+}
+
+.mint {
+    font-palette: --Mint;
+}
+
+.rocher-font {
+    font-family: 'Rocher', sans-serif;
+    /* Fallback to sans-serif in case the custom font fails to load */
+}
+
+/* If you want the navbar to be fixed at the top and not scroll with the page, 
+   you can use the following class: */
+
+/* Navbar styling */
+.navbar {
+    background-color: #1899D6;
+    /* Main color for the navbar */
+    border-radius: 10px;
+    /* Rounded corners for the navbar */
+    padding: 13px 16px;
+    /* Padding for the navbar */
+    position: relative;
+    /* Needed for absolute positioning of the pseudo-element */
+    z-index: 2;
+    /* Ensures navbar is above the pseudo-element */
+}
+
+/* Pseudo-element for the second layer (the darker layer below) */
+.navbar::after {
+    content: "";
+    /* Required for the pseudo-element to work */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    /* Position the darker layer slightly below the main layer */
+    z-index: -1;
+    /* Position it behind the navbar */
+    background-color: #1CB0F6;
+    /* Second layer color */
+    border-radius: 10px;
+    /* Match the navbar border-radius */
+    border-bottom: 4px solid #005ea2;
+    /* Simulate the border effect from the button */
+}
+
+/* When the user hovers over the navbar, adjust the brightness */
+.navbar:hover {
+    filter: brightness(1.1);
+}
+
+.navbar-pages {
+    font-size: 1.5em;
+    /* border: 1px solid black; */
+    /* border-radius: 16px; */
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+/* .navbar-text {
+    color: rgb(0, 0, 0, 0);
+} */
+
+
+
+.page-title-bar {
+    font-size: 2em;
+    text-align: center;
+    background-color: #ee7569;
+    padding: 8px 0;
+}
+
+/*  ***********************************************************
+    ***********************************************************
+    ***********************************************************
+    ***********************************************************
+
+
+
+                            Nav Bar Style
+
+
+
+    ***********************************************************
+    ***********************************************************
+    ***********************************************************
+    *********************************************************** */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    background: #242526;
+}
+
+/* nav .wrapper {
+    position: relative;
+    padding: 0px 30px;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper .nav-links {
+    display: inline-flex;
+} */
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links li a {
+    color: #1999d6;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: 9px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    background: #068b96;
+}
+
+.nav-links .mobile-item {
+    display: none;
+}
+
+
+/* CSS */
+.reset-button {
+    position: relative;
+    appearance: button;
+    background-color: #1899D6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: din-round, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 10%;
+    height: 8vh;
+}
+
+.reset-button:after {
+    background-clip: padding-box;
+    background-color: #1CB0F6;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.reset-button:main,
+.reset-button:focus {
+    user-select: auto;
+}
+
+.reset-button:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+}
+
+.reset-button:disabled {
+    cursor: auto;
+}
+
+.reset-button:active {
+    border-width: 4px 0 0;
+    background: none;
+}
+
+
+.svg-button {
+    position: relative;
+    border: 2px solid black;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 8px;
+    width: 9vh;
+    height: 10vh;
+
+}
+
+.svg-button:hover {
+    transform: scale(1.1);
+    /* Scale up the button */
+    background-color: #4CAF50;
+    /* Change background color */
+    color: rgb(236, 4, 4);
+}
+
+/* SVG specific styles */
+.svg-button svg {
+    margin-right: 0px;
+    vertical-align: middle;
+}
+
+
+footer, .text-center, .p-3 {
+    margin: 0;
+    padding: 0;
+}
