@@ -178,24 +178,6 @@ function selectNSentencesAndImage(imagesDict, n) {
     createSentenceButtons(sentences, selectedKey);
 }
 
-// // Update your existing createSentenceButtons function with this version
-// function createSentenceButtons(sentences, correctKey) {
-//     sentenceButtons = sentences.map((sentence, index) => {
-//         let isCorrect = imagesDict[correctKey].includes(sentence);
-//         return {
-//             x: 1.5 * scale,
-//             y: buttonY + index * (buttonHeight + buttonMargin),
-//             width: (width / 2) - 2 * scale,
-//             height: buttonHeight,
-//             text: sentence,
-//             correct: isCorrect,
-//             clicked: false, // New property to track if the button has been clicked
-//             wrong: false, // Tracks if a wrong option was clicked
-//             isVisible: true // New property to track visibility
-//         };
-//     });
-// }
-
 // Update your existing createSentenceButtons function with this version
 function createSentenceButtons(sentences, correctKey) {
     sentenceButtons = sentences.map((sentence, index) => {
