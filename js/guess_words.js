@@ -728,7 +728,7 @@ function drawResetButton() {
 
 function checkResetButtonHover() {
 
-    resetButtonHover = mouseX >= resetButton.x && mouseX <= resetButton.x + resetButton.width / 2 && 
-                       mouseY >= resetButton.y && mouseY <= resetButton.y + resetButton.height / 2;
+    resetButtonHover = mouseX >= resetButton.x && mouseX <= resetButton.x + resetButton.width && 
+                       mouseY >= resetButton.y && mouseY <= resetButton.y + resetButton.height;
 }
 
