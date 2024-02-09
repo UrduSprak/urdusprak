@@ -11,6 +11,15 @@ var URDU_ALPHABETS = {
     "ء": "ء", "ی": "ی", "ئ": "ئ", "ے": "ے", "ﯿ": "ﯿ", "ـہ": "ـہ"
 }
 
+let DEFAULTS = {
+    'boxW': 50,
+    'boxH': 50,
+    'border_radius': 10,
+    'textSizeValue': 25,
+    'join_rectW': 500,
+    'join_rectH': 70,
+}
+
 let canvasHeight = 100;
 let draggableElements = [];
 let startingPositions = [];
@@ -24,14 +33,12 @@ let boxW = 60;
 let boxH = 60;
 let border_radius = 10
 
-
 let join_rectX = 0;
 let join_rectY = 0;
 let join_rectW = 0;
 let join_rectH = 0;
 
-
-textSizeValue = 25;
+let textSizeValue = 25;
 
 // Assuming you know the position (x, y) and size (w, h) of the black rectangle
 
@@ -43,21 +50,25 @@ for (var key in URDU_ALPHABETS) {
     }
 }
 
-
 function setup() {
     textFont('Rocher');
-    join_rectW = 500;
-    join_rectH = 100;
-    canvasHeight = document.getElementById('dragDrop_animator').offsetHeight - 10;
-    join_rectX = windowWidth / 2 - join_rectW / 2;
-    join_rectY = canvasHeight * 0.7;
+    widthFactor = windowWidth / 1440;
+    heightFactor = windowHeight / 800;
+    console.log('[heightFactor, widthFactor]', heightFactor, widthFactor);
+
+    canvasHeight = document.querySelector('main').offsetHeight - document.querySelector('main .row').offsetHeight - 10;
     let cnv = createCanvas(windowWidth, canvasHeight);
     cnv.parent('dragDrop_animator'); // Assign the canvas to the container
     cnv.style('width', '100%');
     cnv.style('height', '100%');
+
+    boxW = DEFAULTS['boxW'] * widthFactor;
+    boxH = DEFAULTS['boxH'] * heightFactor;
+    textSizeValue = DEFAULTS['textSizeValue'] * (widthFactor + heightFactor) * 0.4;
+
     textSize(textSizeValue);
 
-    trashButton = new TrashButton(windowWidth - 128, canvasHeight - 100, 100, 100);
+    trashButton = new TrashButton(width - 100, canvasHeight - 50, 100 * widthFactor, 100 * widthFactor);
 
     trashButtonBounds = {
         x: trashButton.x - 50,
@@ -66,28 +77,29 @@ function setup() {
         h: trashButton.h
     };
 
-    resetBtn = new ResetButton(100, canvasHeight - 128, 196, 72, 20, label = 'Reset');
+    resetBtn = new ResetButton(100, height - 80, 128, 64, 20, label = 'Reset');
 
     placedChars = new Array(targetPositions.length).fill('');
 
     // Define starting positions for the draggable elements
     let cols = 20;
     let rows = ceil(labels.length / cols);
-    let padding = 10;
-    let startY = 50;
+    let padding = 10 * (widthFactor + heightFactor) * 0.5;
+    let startY = 30;
 
     // Calculate the total width of the grid containing the characters
     let totalGridWidth = cols * (boxW + padding) - padding;
 
     // Calculate the starting X position for the characters to be centered
     let startX = (width - totalGridWidth) / 2;
+    let x, y;
 
     for (let i = 0; i < labels.length; i++) {
         let row = floor(i / cols);
         let col = cols - 1 - (i % cols); // Start from the right-most column
 
-        let x = startX + col * (boxW + padding);
-        let y = startY + row * (boxH + padding);
+        x = startX + col * (boxW + padding);
+        y = startY + row * (boxH + padding);
 
         // Adjust startX for the last row if it is not completely filled
         if (row === rows - 1) {
@@ -111,18 +123,105 @@ function setup() {
 
     // Define the starting X position for the first target to center them
     let targetStartX = (width - totalTargetsWidth) / 2;
-    let targetY = height / 2 + 30; // Positioning target boxes in the lower half of the canvas
+    let targetY = y + boxH * 2; // Positioning target boxes in the lower half of the canvas
 
     // Create and store target positions
     for (let i = 0; i < targetsCount; i++) {
         targetPositions.push({ x: targetStartX + i * (boxW + padding), y: targetY });
     }
 
+    join_rectW = DEFAULTS['join_rectW'] * widthFactor;
+    join_rectH = DEFAULTS['join_rectH'] * heightFactor;
+    join_rectX = width / 2 - join_rectW / 2;
+    join_rectY = targetY + boxH * 2;
 }
 
 function windowResized() {
-    canvasHeight = document.getElementById('dragDrop_animator').offsetHeight;
-    resizeCanvas(windowWidth, canvasHeight); // Resize canvas, adjust for navbar height
+    // draggableElements = [];
+    // startingPositions = [];
+    // targetPositions = [];
+    // placedChars = [];
+
+    widthFactor = windowWidth / 1440;
+    heightFactor = windowHeight / 800;
+    console.log('[heightFactor, widthFactor]', heightFactor, widthFactor);
+
+    canvasHeight = document.querySelector('main').offsetHeight - document.querySelector('main .row').offsetHeight - 10;
+    console.log(windowWidth, canvasHeight);
+    resizeCanvas(windowWidth, canvasHeight);
+
+    boxW = DEFAULTS['boxW'] * widthFactor;
+    boxH = DEFAULTS['boxH'] * heightFactor;
+    textSizeValue = DEFAULTS['textSizeValue'] * (widthFactor + heightFactor) * 0.4;
+
+    textSize(textSizeValue);
+
+    trashButton = new TrashButton(width - 100, canvasHeight - 50, 100 * widthFactor, 100 * widthFactor);
+
+    trashButtonBounds = {
+        x: trashButton.x - 50,
+        y: trashButton.y - 50,
+        w: trashButton.w,
+        h: trashButton.h
+    };
+
+    resetBtn = new ResetButton(100, height - 80, 128, 64, 20, label = 'Reset');
+
+    // placedChars = new Array(targetPositions.length).fill('');
+
+    // Define starting positions for the draggable elements
+    let cols = 20;
+    let rows = ceil(labels.length / cols);
+    let padding = 10 * (widthFactor + heightFactor) * 0.5;
+    let startY = 30;
+
+    // Calculate the total width of the grid containing the characters
+    let totalGridWidth = cols * (boxW + padding) - padding;
+
+    // Calculate the starting X position for the characters to be centered
+    let startX = (width - totalGridWidth) / 2;
+    let x, y;
+
+    for (let i = 0; i < labels.length; i++) {
+        let row = floor(i / cols);
+        let col = cols - 1 - (i % cols); // Start from the right-most column
+
+        x = startX + col * (boxW + padding);
+        y = startY + row * (boxH + padding);
+
+        // Adjust startX for the last row if it is not completely filled
+        if (row === rows - 1) {
+            let itemsInLastRow = labels.length % cols || cols;
+            if (itemsInLastRow !== cols) { // If last row isn't full, center it
+                let lastRowWidth = itemsInLastRow * (boxW + padding) - padding;
+                let emptySpace = totalGridWidth - lastRowWidth;
+                x = startX + emptySpace / 2 + (col - (cols - itemsInLastRow)) * (boxW + padding);
+            }
+        }
+
+        let draggable = new Draggable(x, y, boxW, boxH, border_radius, labels[i], true);
+        draggable.startingIndex = i; // Assign an index to each draggable
+        draggableElements[i] = draggable;
+        startingPositions[i] = { x: x, y: y };
+    }
+
+    // Calculate the total width of all targets including padding
+    let targetsCount = 20; // Number of target positions
+    let totalTargetsWidth = targetsCount * boxW + (targetsCount - 1) * padding;
+
+    // Define the starting X position for the first target to center them
+    let targetStartX = (width - totalTargetsWidth) / 2;
+    let targetY = y + boxH * 2; // Positioning target boxes in the lower half of the canvas
+
+    // Create and store target positions
+    for (let i = 0; i < targetsCount; i++) {
+        targetPositions[i] = { x: targetStartX + i * (boxW + padding), y: targetY };
+    }
+
+    join_rectW = DEFAULTS['join_rectW'] * widthFactor;
+    join_rectH = DEFAULTS['join_rectH'] * heightFactor;
+    join_rectX = width / 2 - join_rectW / 2;
+    join_rectY = targetY + boxH * 2;
 }
 
 let currentlyDragging = null;
@@ -548,10 +647,6 @@ function resetSketch() {
     // Redraw the canvas to reflect the changes
     redraw(); // Only if you're not using a continuous draw loop
 }
-
-
-
-
 
 class TrashButton {
     constructor(x, y, w, h) {

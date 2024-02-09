@@ -1,10 +1,11 @@
 let x = 50;
 let y = 50;
-let speedX = 10;
-let speedY = 10;
+let speedX = 1;
+let speedY = 1;
+let join_rectW = 300;
 
 function setup() {
-    canvasHeight = document.getElementById('drag-drop').offsetHeight - 10;
+    canvasHeight = document.getElementById('drag_drop').offsetHeight - 10;
     join_rectX = windowWidth / 2 - join_rectW / 2;
     join_rectY = canvasHeight * 0.7;
     let cnv = createCanvas(windowWidth, canvasHeight);
@@ -34,4 +35,3 @@ function draw() {
         speedY *= -1;
     }
 }
-

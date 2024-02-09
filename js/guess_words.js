@@ -11,36 +11,45 @@ let URDU_ALPHABETS = {
     "ء": "ء", "ی": "ی", "ئ": "ئ", "ے": "ے", "ﯿ": "ﯿ", "ـہ": "ـہ"
 }
 
-let words = {"آؤ": ["آ", "ؤ"], "آب": ["آ", "ب"], "آج": ["آ", "ج"], "آم": ["آ", "م"], "آن": ["آ", "ن"],
-         "بل": ["ﺒ", "ل"], "بو": ["ﺒ", "و"], "تب": ["ﺘ", "ب"], "تر": ["ﺘ", "ر"], "جب": ["ﺟ", "ب"],
-         "خط": ["ﺧ", "ﻄ"], "لو": ["ﻠ", "و"], "پر": ["ﭙ", "ر"], "کم": ["ﻜ", "م"],
+let words = {
+    "آؤ": ["آ", "ؤ"], "آب": ["آ", "ب"], "آج": ["آ", "ج"], "آم": ["آ", "م"], "آن": ["آ", "ن"],
+    "بل": ["ﺒ", "ل"], "بو": ["ﺒ", "و"], "تب": ["ﺘ", "ب"], "تر": ["ﺘ", "ر"], "جب": ["ﺟ", "ب"],
+    "خط": ["ﺧ", "ﻄ"], "لو": ["ﻠ", "و"], "پر": ["ﭙ", "ر"], "کم": ["ﻜ", "م"],
 
-         // Three Letter Words
-         "آئی": ["آ", "ئ", "ی"], "آئے": ["آ", "ئ", "ے"], "بہت": ["ﺒ", "ہـ", "ت"], "بہن": ["ﺒ", "ہـ", "ن"],
-         "بیس": ["ﺒ", "ﯿ", "س"], "تیل": ["ﺘ", "ﯿ", "ل"], "صحت": ["ﺼ", "ﺣ", "ت"], "لاؤ": ["ﻠ", "ا", "ؤ"],
-         "مور": ["ﻤ", "و", "ر"], "مُہر": ["ﻤ", "ہـ", "ر"], "ناؤ": ["ﻨ", "ا", "ؤ"], "نوٹ": ["ﻨ", "و", "ٹ"],
-         "چیل": ["ﭼ", "ﯿ", "ل"], "یہی": ["ﯿ", "ہـ", "ی"],
+    // Three Letter Words
+    "آئی": ["آ", "ئ", "ی"], "آئے": ["آ", "ئ", "ے"], "بہت": ["ﺒ", "ہـ", "ت"], "بہن": ["ﺒ", "ہـ", "ن"],
+    "بیس": ["ﺒ", "ﯿ", "س"], "تیل": ["ﺘ", "ﯿ", "ل"], "صحت": ["ﺼ", "ﺣ", "ت"], "لاؤ": ["ﻠ", "ا", "ؤ"],
+    "مور": ["ﻤ", "و", "ر"], "مُہر": ["ﻤ", "ہـ", "ر"], "ناؤ": ["ﻨ", "ا", "ؤ"], "نوٹ": ["ﻨ", "و", "ٹ"],
+    "چیل": ["ﭼ", "ﯿ", "ل"], "یہی": ["ﯿ", "ہـ", "ی"],
 
-         // Four Letter Words
-         "باجے": ["ﺒ", "ا", "ﺟ", "ے"], "بادل": ["ﺒ", "ا", "د", "ل"], "بستہ": ["ﺒ", "ﺴ", "ﺘ", "ـہ"],
-         "بوئی": ["ﺒ", "و", "ئ", "ی"], "بوئے": ["ﺒ", "و", "ئ", "ے"], "بوری": ["ﺒ", "و", "ر", "ی"],
-         "تالے": ["ﺘ", "ا", "ﻠ", "ے"], "جائی": ["ﺟ", "ا", "ئ", "ی"], "دودھ": ["د", "و", "د", "ھ"],
-         "رائے": ["ر", "ا", "ئ", "ے"], "روئے": ["ر", "و", "ئ", "ے"], "سائے": ["ﺴ", "ا", "ئ", "ے"],
-         "سوئی": ["ﺴ", "و", "ئ", "ی"], "سوئے": ["ﺴ", "و", "ئ", "ے"], "طوطا": ["ﻄ", "و", "ﻄ", "ا"],
-         "لائی": ["ﻠ", "ا", "ئ", "ی"], "لائے": ["ل", "ا", "ئ", "ے"], "محلہ": ["ﻤ", "ﺣ", "ﻠ", "ـہ"],
-         "نہیں": ["ﻨ", "ہـ", "ﯿ", "ں"], "پانی": ["ﭙ", "ا", "ﻨ", "ی"], "پھول": ["ﭙ", "ھ", "و", "ل"],
-         "ڈھول": ["ڈ", "ھ", "و", "ل"], "ڈھیر": ["ڈ", "ھ", "ﯿ", "ر"], "کتاب": ["ﻜ", "ﺘ", "ا", "ب"],
-         "کوئی": ["ﻜ", "و", "ئ", "ی"], "کھاؤ": ["ﻜ", "ھ", "ا", "ؤ"], "گائی": ["ﮔ", "ا", "ئ", "ی"],
-         "گھاس": ["ﮔ", "ھ", "ا", "س"], "ہائے": ["ہـ", "ا", "ئ", "ے"],
+    // Four Letter Words
+    "باجے": ["ﺒ", "ا", "ﺟ", "ے"], "بادل": ["ﺒ", "ا", "د", "ل"], "بستہ": ["ﺒ", "ﺴ", "ﺘ", "ـہ"],
+    "بوئی": ["ﺒ", "و", "ئ", "ی"], "بوئے": ["ﺒ", "و", "ئ", "ے"], "بوری": ["ﺒ", "و", "ر", "ی"],
+    "تالے": ["ﺘ", "ا", "ﻠ", "ے"], "جائی": ["ﺟ", "ا", "ئ", "ی"], "دودھ": ["د", "و", "د", "ھ"],
+    "رائے": ["ر", "ا", "ئ", "ے"], "روئے": ["ر", "و", "ئ", "ے"], "سائے": ["ﺴ", "ا", "ئ", "ے"],
+    "سوئی": ["ﺴ", "و", "ئ", "ی"], "سوئے": ["ﺴ", "و", "ئ", "ے"], "طوطا": ["ﻄ", "و", "ﻄ", "ا"],
+    "لائی": ["ﻠ", "ا", "ئ", "ی"], "لائے": ["ل", "ا", "ئ", "ے"], "محلہ": ["ﻤ", "ﺣ", "ﻠ", "ـہ"],
+    "نہیں": ["ﻨ", "ہـ", "ﯿ", "ں"], "پانی": ["ﭙ", "ا", "ﻨ", "ی"], "پھول": ["ﭙ", "ھ", "و", "ل"],
+    "ڈھول": ["ڈ", "ھ", "و", "ل"], "ڈھیر": ["ڈ", "ھ", "ﯿ", "ر"], "کتاب": ["ﻜ", "ﺘ", "ا", "ب"],
+    "کوئی": ["ﻜ", "و", "ئ", "ی"], "کھاؤ": ["ﻜ", "ھ", "ا", "ؤ"], "گائی": ["ﮔ", "ا", "ئ", "ی"],
+    "گھاس": ["ﮔ", "ھ", "ا", "س"], "ہائے": ["ہـ", "ا", "ئ", "ے"],
 
-         // Five Letter Words
-         "بھائی": ["ﺒ", "ھ", "ا", "ئ", "ی"], "بھالو": ["ﺒ", "ھ", "ا", "ﻠ", "و"], "تھوڑی": ["ﺘ", "ھ", "و", "ڑ", "ی"],
-         "دھوئی": ["د", "ھ", "و", "ئ", "ی"], "دھوئے": ["د", "ھ", "و", "ئ", "ے"], "کھائی": ["ﻜ", "ھ", "ئ", "ی"],
-         "کھائے": ["ﻜ", "ھ", "ئ", "ے"], "کھوئی": ["ﻜ", "ھ", "و", "ئ", "ی"], "کھوئے": ["ﻜ", "ھ", "و", "ئ", "ے"],
+    // Five Letter Words
+    "بھائی": ["ﺒ", "ھ", "ا", "ئ", "ی"], "بھالو": ["ﺒ", "ھ", "ا", "ﻠ", "و"], "تھوڑی": ["ﺘ", "ھ", "و", "ڑ", "ی"],
+    "دھوئی": ["د", "ھ", "و", "ئ", "ی"], "دھوئے": ["د", "ھ", "و", "ئ", "ے"], "کھائی": ["ﻜ", "ھ", "ئ", "ی"],
+    "کھائے": ["ﻜ", "ھ", "ئ", "ے"], "کھوئی": ["ﻜ", "ھ", "و", "ئ", "ی"], "کھوئے": ["ﻜ", "ھ", "و", "ئ", "ے"],
 
-         // Six Letter Words
-         "کھلاڑی": ["ﻜ", "ھ", "ﻠ", "ا", "ڑ", "ی"]
+    // Six Letter Words
+    "کھلاڑی": ["ﻜ", "ھ", "ﻠ", "ا", "ڑ", "ی"]
+}
 
+let DEFAULTS = {
+    'textSizeValue': 25,
+    'buttonWidth': 150,
+    'buttonHeight': 50,
+    'buttonSpacing': 40,
+    'buttonMargin': 20,
+    'buttonY': 50,
 }
 
 let resetButton;
@@ -50,13 +59,10 @@ let guessedWord = [];
 let alphabetButtons = []; // Array to store the state of each button
 let currentAudio;
 let selectedCategory = "Two";
-let wordButtons = [
-    "Two", "Three", "Four", "Five", "Six"
-]; // Updated to match the word lengths
+let wordButtons = ["Two", "Three", "Four", "Five", "Six"]; // Updated to match the word lengths
 
 // Use default text size and font until you confirm 'Rocher' is loading correctly
 let textSizeValue = 25;
-
 
 let buttonWidth = 150;
 let buttonHeight = 50;
@@ -83,39 +89,51 @@ let resetButtonHover = false;
 let resetButtonPressed = false;
 
 let alphabetConfig = {};
+let heightFactor, widthFactor;
 
 function setup() {
     textFont('Rocher');
-    textSize(textSizeValue);
-    textAlign(CENTER, CENTER);
+    widthFactor = windowWidth / 1440;
+    heightFactor = windowHeight / 800;
+    console.log('[heightFactor, widthFactor]', heightFactor, widthFactor);
 
     // Make sure 'guess_words' exists and has a height greater than 0
-    const guessWordsElem = document.getElementById('guess_words');
-    canvasHeight = guessWordsElem.offsetHeight - 10;
+    // const guessWordsElem = document.getElementById('guess_words');
+    // canvasHeight = guessWordsElem.offsetHeight - 10;
+    canvasHeight = document.querySelector('main').offsetHeight - document.querySelector('main .row').offsetHeight - 10;
+    console.log('[canvasHeight]', canvasHeight);
     let cnv = createCanvas(windowWidth, canvasHeight);
     cnv.parent('guess_words'); // Assign the canvas to the container
     cnv.style('width', '100%');
     cnv.style('height', '100%');
 
+    // rescale variables
+    textSizeValue = DEFAULTS['textSizeValue'] * (widthFactor + heightFactor) * 0.4;
+    buttonWidth = DEFAULTS['buttonWidth'] * widthFactor;
+    buttonHeight = DEFAULTS['buttonHeight'] * heightFactor;
+    buttonSpacing = DEFAULTS['buttonSpacing'] * heightFactor * 0.5;
+    buttonMargin = DEFAULTS['buttonMargin'] * heightFactor;
+
+    textSize(textSizeValue);
+    textAlign(CENTER, CENTER);
+
     // Configuration for the alphabet buttons
     alphabetConfig = {
-        buttonSize: 50,
-        startX: windowWidth / 2 - 450,
-        startY: height / 2 - 100,
-        padding: 10,
+        buttonSize: 50 * (widthFactor + heightFactor) * 0.4,
+        padding: 10 * (widthFactor + heightFactor) * 0.4,
         buttonsPerRow: 15,
         hoverIncrease: 5,
-
         // Calculate the start positions based on the canvas size
-        get startX() { return windowWidth / 2 - (this.buttonSize + this.padding) * (this.buttonsPerRow / 2); },
-        get startY() { return height / 2 - 0.6 *((this.buttonSize + this.padding) * Math.ceil(Object.keys(URDU_ALPHABETS).length / this.buttonsPerRow)) / 2; }
+        get startX() { return width * 0.5 - (this.buttonSize + this.padding) * (this.buttonsPerRow) * 0.5; },
+        startY: height * 0.25,
+        // get startY() { return height * 0.5 - (this.buttonSize + this.padding) * Math.ceil(Object.keys(URDU_ALPHABETS).length / this.buttonsPerRow) * 0.5; }
     };
 
     resetButton = {
-        x: width - 350,
-        y: height - 200,
-        width: 125,
-        height: 70,
+        x: width * 0.88,
+        y: height * 0.80,
+        width: width * 0.1,
+        height: height * 0.12,
         color: '#1CB0F6', // Default color
         hoverColor: '#1CB0F6', // Color when hovered
         pressColor: '#1CB0F6', // Color when pressed
@@ -129,6 +147,57 @@ function setup() {
     newWord();
 
     guessedWord = Array(currentWord.length).fill(''); // Initialize with placeholders 
+}
+
+function windowResized() {
+    widthFactor = windowWidth / 1440;
+    heightFactor = windowHeight / 800;
+    console.log('[heightFactor, widthFactor]', heightFactor, widthFactor);
+
+    canvasHeight = document.querySelector('main').offsetHeight - document.querySelector('main .row').offsetHeight - 10;
+    console.log(windowWidth, canvasHeight);
+    resizeCanvas(windowWidth, canvasHeight);
+
+    // rescale variables
+    textSizeValue = DEFAULTS['textSizeValue'] * (widthFactor + heightFactor) * 0.4;
+    buttonWidth = DEFAULTS['buttonWidth'] * widthFactor;
+    buttonHeight = DEFAULTS['buttonHeight'] * heightFactor;
+    buttonSpacing = DEFAULTS['buttonSpacing'] * heightFactor * 0.5;
+    buttonMargin = DEFAULTS['buttonMargin'] * heightFactor;
+
+    textSize(textSizeValue);
+    textAlign(CENTER, CENTER);
+
+    // Configuration for the alphabet buttons
+    alphabetConfig = {
+        buttonSize: 50 * (widthFactor + heightFactor) * 0.4,
+        padding: 10 * (widthFactor + heightFactor) * 0.4,
+        buttonsPerRow: 15,
+        hoverIncrease: 5,
+        // Calculate the start positions based on the canvas size
+        get startX() { return width * 0.5 - (this.buttonSize + this.padding) * (this.buttonsPerRow) * 0.5; },
+        startY: height * 0.25,
+        // get startY() { return height * 0.5 - (this.buttonSize + this.padding) * Math.ceil(Object.keys(URDU_ALPHABETS).length / this.buttonsPerRow) * 0.5; }
+    };
+
+    resetButton = {
+        x: width * 0.88,
+        y: height * 0.80,
+        width: width * 0.1,
+        height: height * 0.12,
+        color: '#1CB0F6', // Default color
+        hoverColor: '#1CB0F6', // Color when hovered
+        pressColor: '#1CB0F6', // Color when pressed
+        isHovered: false,
+        isPressed: false
+    };
+
+    initializeAlphabetButtons();
+
+    // Remove newWord() call if not defined in this context
+    newWord();
+
+    guessedWord = Array(currentWord.length).fill(''); // Initialize with placeholders
 }
 
 function draw() {
@@ -154,14 +223,14 @@ function newWord() {
         // guessedWord = Array(numberOfLetters).fill('_'); // Initialize with placeholders based on word length.
 
         let audioPath = `../media/audio/words/${selectedCategory} Letters/${randomWord}.m4a`;
-        currentAudio = loadSound(audioPath, function() {
+        currentAudio = loadSound(audioPath, function () {
             console.log('Audio loaded successfully');
-        }, function() {
+        }, function () {
             console.log('Error loading audio');
         });
     }
 
-    
+
     // Reset the guessedWord array with empty strings for the new word's length
     guessedWord = Array(currentWord.length).fill('');
 
@@ -185,35 +254,34 @@ function getNumberOfLetters(category) {
             return 2; // default to two if there's an issue
     }
 }
-  
-  
+
 function initializeAlphabetButtons() {
     let keys = Object.keys(URDU_ALPHABETS);
-  
+    console.log('[alphabetConfig]', alphabetConfig);
     keys.forEach((key, index) => {
-      let x = alphabetConfig.startX + (alphabetConfig.buttonSize + alphabetConfig.padding) * (index % alphabetConfig.buttonsPerRow);
-      let y = alphabetConfig.startY + (alphabetConfig.buttonSize + alphabetConfig.padding) * Math.floor(index / alphabetConfig.buttonsPerRow);
-      alphabetButtons.push({
-        key: key,
-        x: x,
-        y: y,
-        size: alphabetConfig.buttonSize,
-        isHovered: false,
-        isPressed: false
-      });
+        let x = alphabetConfig.startX + (alphabetConfig.buttonSize + alphabetConfig.padding) * (index % alphabetConfig.buttonsPerRow);
+        let y = alphabetConfig.startY + (alphabetConfig.buttonSize + alphabetConfig.padding) * Math.floor(index / alphabetConfig.buttonsPerRow);
+        alphabetButtons.push({
+            key: key,
+            x: x,
+            y: y,
+            size: alphabetConfig.buttonSize,
+            isHovered: false,
+            isPressed: false
+        });
     });
 }
-  
+
 function drawAlphabetButtons() {
     let keys = Object.keys(URDU_ALPHABETS);
     // Calculate the total width once
     let totalWidth = alphabetConfig.buttonsPerRow * (alphabetConfig.buttonSize + alphabetConfig.padding);
-    
+
     keys.forEach((key, index) => {
         // Start drawing from the right by subtracting the current button's position from the total width
         let x = alphabetConfig.startX + totalWidth - (alphabetConfig.buttonSize + alphabetConfig.padding) * (index % alphabetConfig.buttonsPerRow) - alphabetConfig.buttonSize;
         let y = alphabetConfig.startY + (alphabetConfig.buttonSize + alphabetConfig.padding) * Math.floor(index / alphabetConfig.buttonsPerRow);
-        
+
         let button = alphabetButtons[index];
         let isHovered = index === buttonHover;
         let isPressed = index === buttonPressed;
@@ -230,7 +298,7 @@ function drawAlphabetButtons() {
         fill(buttonColor);
         noStroke();
         rect(button.x + xOffset, button.y + yOffset, currentButtonSize, currentButtonSize, 5);
-        
+
         // Text color and style
         fill(0);
         textSize(textSizeValue * 0.8);
@@ -240,7 +308,6 @@ function drawAlphabetButtons() {
     });
 }
 
-  
 
 function updateButtonHover() {
     // Reset hover state before checking
@@ -263,7 +330,6 @@ function updateButtonHover() {
 }
 
 
-
 function updateButtonPress() {
     let buttonSize = 50;
     let startX = (windowWidth - (buttonSize * 15)) / 2;
@@ -273,11 +339,11 @@ function updateButtonPress() {
 
     // Reset press state before checking
     buttonPressed = -1;
-    
+
     keys.forEach((key, index) => {
         let x = startX + (buttonSize + padding) * (index % 15);
         let y = startY + (buttonSize + padding) * floor(index / 15);
-        
+
         // Check if the mouse is pressing this button
         if (mouseX >= x && mouseX <= x + buttonSize && mouseY >= y && mouseY <= y + buttonSize) {
             buttonPressed = index;
@@ -301,7 +367,7 @@ function checkLetter(selectedLetter) {
     // If the letter was found in the word, update the display
     if (letterFound) {
         drawWordGuess();
-        
+
     } else {
         // If the letter was not found, display "غلط" and clear after 1 second
         displayIncorrectGuess();
@@ -336,21 +402,21 @@ function checkLetter(selectedLetter) {
 function drawWordGuess(correct = true) {
     // Always draw the white rectangle first
     fill('white');
-    rect(width / 4, 100, width / 2, 100, 10);
+    rect(width * 0.25, height * 0.05, width * 0.5, height * 0.12, 10);
 
-    textSize(textSizeValue*2);
+    textSize(textSizeValue * 2);
     textAlign(CENTER, CENTER);
 
     if (correct) {
         // If the guess is correct, display the guessed word
         fill(0); // Black color for correct guess
-        text(guessedWord.join(''), width / 2, 150);
+        text(guessedWord.join(''), width / 2, height * 0.12);
     } else {
         // If the guess is incorrect, display the "غلط" message
         fill('#ff0000'); // Red color for incorrect guess
-        text('غلط', width / 2, 150);
+        text('غلط', width / 2, height * 0.12);
         // Call the setTimeout here if you want the incorrect message to disappear after 1 second
-        setTimeout(function() {
+        setTimeout(function () {
             drawWordGuess(); // This will clear the incorrect message and show the current guessedWord again
         }, 1000);
     }
@@ -370,38 +436,38 @@ function displayIncorrectGuess() {
 }
 
 
-
 function drawWordButtons() {
-    let startX = 50; // Adjust as needed for your layout
-    let startY = 100; // Starting Y position, adjust as needed
-  
+    let startX = width * 0.02; // Adjust as needed for your layout
+    let startY = (height - (buttonHeight + buttonSpacing) * wordButtons.length) / 2; // Starting Y position, adjust as needed
+
     wordButtons.forEach((label, index) => {
-      let y = startY + index * (buttonHeight + buttonSpacing);
-      let isHovered = (hoveredButtonIndex === index);
-      let isPressed = (pressedButtonIndex === index);
-      
-      let buttonFill = isPressed ? '#1899D6' : isHovered ? '#1CB0F6' : '#1CB0F6';
-      let yOffset = isHovered ? -5 : 0;
-      
-      fill(buttonFill);
-      noStroke();
-      rect(startX, y + yOffset, buttonWidth, buttonHeight, 20);
-      
-      fill(isPressed ? '#d1ccc0' : '0');
-      noStroke();
-      text(label, startX + buttonWidth / 2, y + buttonHeight / 2 + yOffset);
+        // console.log('[label]', label);
+        let y = startY + index * (buttonHeight + buttonSpacing);
+        let isHovered = (hoveredButtonIndex === index);
+        let isPressed = (pressedButtonIndex === index);
+
+        let buttonFill = isPressed ? '#1899D6' : isHovered ? '#1CB0F6' : '#1CB0F6';
+        let yOffset = isHovered ? -5 : 0;
+        // console.log('[buttonFill]', buttonFill);
+        fill(buttonFill);
+        noStroke();
+        rect(startX, y + yOffset, buttonWidth, buttonHeight, 20);
+
+        fill(isPressed ? '#d1ccc0' : '0');
+        noStroke();
+        text(label, startX + buttonWidth / 2, y + buttonHeight / 2 + yOffset);
     });
 }
 
 function drawPlayButton() {
-    let playButtonX = width / 2;
-    let playButtonY = height / 2 + 275; // Position the button below the alphabet buttons
+    let playButtonX = width * 0.5;
+    let playButtonY = height * 0.9; // Position the button below the alphabet buttons
     let buttonSize = 60;
-    
+
     fill('#7fbab7'); // Green play button
     noStroke();
     ellipse(playButtonX, playButtonY, buttonSize, buttonSize); // Draw the play button
-    
+
     fill(0); // Black triangle for the play icon
     triangle(
         playButtonX - 10, playButtonY - 15,
@@ -411,13 +477,14 @@ function drawPlayButton() {
 }
 
 function checkPlayButtonPressed() {
-    let playButtonX = width / 2;
-    let playButtonY = height / 2 + 275; // Adjust this as needed
+    let playButtonX = width * 0.5;
+    let playButtonY = height * 0.9; // Adjust this as needed
     let buttonSize = 60; // Size of the play button
-    console.log("Pressed")
     // Check if the play button is pressed
     let distance = dist(mouseX, mouseY, playButtonX, playButtonY);
-    if (distance < buttonSize / 2) {
+    console.log('[distance]', distance, buttonSize);
+    if (distance < buttonSize * 0.5) {
+        console.log("Button Pressed")
         // Play the audio if the play button is clicked
         if (currentAudio && currentAudio.isLoaded()) {
             currentAudio.play();
@@ -436,10 +503,10 @@ function mouseMoved() {
     updateButtonHover();
 
     // Check if the mouse is over the reset button
-    resetButton.isHovered = mouseX > resetButton.x && 
-    mouseX < (resetButton.x + resetButton.width) &&
-    mouseY > resetButton.y && 
-    mouseY < (resetButton.y + resetButton.height);
+    resetButton.isHovered = mouseX > resetButton.x &&
+        mouseX < (resetButton.x + resetButton.width) &&
+        mouseY > resetButton.y &&
+        mouseY < (resetButton.y + resetButton.height);
 }
 
 // Helper function to determine if the mouse is within the button bounds
@@ -462,7 +529,7 @@ function mousePressed() {
         // Calculate x position from the right edge
         let x = alphabetConfig.startX + totalWidth - (alphabetConfig.buttonSize + alphabetConfig.padding) * (i % alphabetConfig.buttonsPerRow) - alphabetConfig.buttonSize;
         let y = alphabetConfig.startY + (alphabetConfig.buttonSize + alphabetConfig.padding) * Math.floor(i / alphabetConfig.buttonsPerRow);
-        
+
         if (isMouseWithinButton(x, y, alphabetConfig.buttonSize)) {
             // The alphabet button was pressed
             let letter = keys[i];
@@ -542,19 +609,19 @@ function mouseReleased() {
     // Reset the button state when the mouse is released
     resetButton.isPressed = false;
 }
-  
+
 
 function checkButtonHover() {
     let startX = 50;
     let startY = 100;
     hoveredButtonIndex = -1; // Reset hovered button index
-  
+
     wordButtons.forEach((label, index) => {
-      let y = startY + index * (buttonHeight + buttonSpacing);
-      if (mouseX > startX && mouseX < startX + buttonWidth &&
-          mouseY > y && mouseY < y + buttonHeight) {
-        hoveredButtonIndex = index;
-      }
+        let y = startY + index * (buttonHeight + buttonSpacing);
+        if (mouseX > startX && mouseX < startX + buttonWidth &&
+            mouseY > y && mouseY < y + buttonHeight) {
+            hoveredButtonIndex = index;
+        }
     });
 }
 
@@ -563,15 +630,15 @@ function checkButtonPress() {
     let startX = 50;
     let startY = 100;
     pressedButtonIndex = -1; // Reset pressed button index
-  
+
     wordButtons.forEach((label, index) => {
-      let y = startY + index * (buttonHeight + buttonSpacing);
-      if (mouseX > startX && mouseX < startX + buttonWidth &&
-          mouseY > y && mouseY < y + buttonHeight) {
-        pressedButtonIndex = index;
-      }
+        let y = startY + index * (buttonHeight + buttonSpacing);
+        if (mouseX > startX && mouseX < startX + buttonWidth &&
+            mouseY > y && mouseY < y + buttonHeight) {
+            pressedButtonIndex = index;
+        }
     });
-  }
+}
 
 
 
@@ -609,12 +676,13 @@ function displayCorrectAttempts() {
     fill('#7fbab7');
     stroke(0);
     strokeWeight(2);
-    rect(width - 300, buttonY + 50, 75, buttonHeight * 1.5, 5);
+    let btnSize = buttonHeight * 1.4;
+    rect(width * 0.9, height * 0.2, btnSize, btnSize, 5);
     fill(0);
     noStroke();
-    textSize(textSizeValue*2);
+    textSize(textSizeValue * 2);
     textAlign(CENTER, CENTER);
-    text(correctAttempts, width - 265, buttonY + 90);
+    text(correctAttempts, width * 0.9 + btnSize * 0.5, height * 0.2 + btnSize * 0.5);
     textSize(textSizeValue);
 }
 
@@ -623,10 +691,12 @@ function displayIncorrectAttempts() {
     fill('#ee7569');
     stroke(0);
     strokeWeight(2);
-    rect(width - 300, buttonY + 230, 75, buttonHeight * 1.5, 5);
-    textSize(textSizeValue*2);
+    let btnSize = buttonHeight * 1.4;
+    rect(width * 0.9, height * 0.4, btnSize, btnSize, 5);
+    textSize(textSizeValue * 2);
     textAlign(CENTER, CENTER);
-    text(incorrectAttempts, width - 265, buttonY + 270);
+    text(correctAttempts, width * 0.9 + btnSize * 0.5, height * 0.4 + btnSize * 0.5);
+    // text(incorrectAttempts, width - 265, buttonY + 270);
     textSize(textSizeValue);
 }
 
@@ -640,15 +710,15 @@ function resetAttempts() {
 }
 
 function drawResetButton() {
-    let buttonColor = resetButton.isPressed ? resetButton.pressColor : 
-                      resetButton.isHovered ? resetButton.hoverColor : 
-                      resetButton.color;
+    let buttonColor = resetButton.isPressed ? resetButton.pressColor :
+        resetButton.isHovered ? resetButton.hoverColor :
+            resetButton.color;
     fill(buttonColor);
     noStroke();
     strokeWeight(2);
     let yOffset = resetButton.isHovered && !resetButton.isPressed ? -3 : 0; // Move up when hovered
     rect(resetButton.x, resetButton.y + yOffset, resetButton.width, resetButton.height, 20);
-    
+
     fill('#FFF');
     noStroke();
     textSize(textSizeValue);
@@ -663,7 +733,7 @@ function checkResetButtonHover() {
     let buttonHeight = 70;
 
     // Check if mouse is over the reset button
-    resetButtonHover = mouseX >= buttonX && mouseX <= buttonX + buttonWidth && 
-                       mouseY >= buttonY && mouseY <= buttonY + buttonHeight;
+    resetButtonHover = mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
+        mouseY >= buttonY && mouseY <= buttonY + buttonHeight;
 }
 
