@@ -273,7 +273,7 @@ function drawClickCounters() {
     rect(30, buttonY + btnShift, btnWidth, btnHeight, 5);
     textSize(textSizeValue * 2);
     textAlign(CENTER, CENTER);
-    text(correctClickCount, 30 + btnWidth * 0.5, btnShift + buttonY + btnHeight * 0.5);
+    text(wrongClickCount, 30 + btnWidth * 0.5, btnShift + buttonY + btnHeight * 0.5);
 }
 
 function drawSentenceButtons() {
