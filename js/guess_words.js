@@ -695,7 +695,7 @@ function displayIncorrectAttempts() {
     rect(width * 0.9, height * 0.4, btnSize, btnSize, 5);
     textSize(textSizeValue * 2);
     textAlign(CENTER, CENTER);
-    text(correctAttempts, width * 0.9 + btnSize * 0.5, height * 0.4 + btnSize * 0.5);
+    text(incorrectAttempts, width * 0.9 + btnSize * 0.5, height * 0.4 + btnSize * 0.5);
     // text(incorrectAttempts, width - 265, buttonY + 270);
     textSize(textSizeValue);
 }
