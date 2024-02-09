@@ -732,8 +732,7 @@ function checkResetButtonHover() {
     let buttonWidth = 125;
     let buttonHeight = 70;
 
-    // Check if mouse is over the reset button
-    resetButtonHover = mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
-        mouseY >= buttonY && mouseY <= buttonY + buttonHeight;
+    resetButtonHover = mouseX >= resetButton.x && mouseX <= resetButton.x + resetButton.width / 2 && 
+                       mouseY >= resetButton.y && mouseY <= resetButton.y + resetButton.height / 2;
 }
 
