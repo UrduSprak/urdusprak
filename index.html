@@ -1110,7 +1110,11 @@ footer {
 
     <div class="describe-layout">
       <div class="describe-image-wrap" id="describeImageWrap">
-        <img id="describeImage" src="" alt="Describe this picture" onerror="this.parentElement.innerHTML='<div style=\'font-size:5rem;text-align:center;\'>🖼️<br><small style=\'font-size:0.3em;color:#aaa;\'>Image not found</small></div>'">
+        <div id="imgPlaceholder" style="display:none;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:8px;">
+          <span style="font-size:4rem">🖼️</span>
+          <small style="color:#aaa;font-weight:700;text-align:center;">Image not found<br>Put <code>media/pages/describe_it/</code> folder<br>next to this HTML file</small>
+        </div>
+        <img id="describeImage" src="" alt="Describe this picture" onerror="this.style.display='none';document.getElementById('imgPlaceholder').style.display='flex'">
       </div>
       <div>
         <div class="describe-title">🎯 Which sentence describes this picture?</div>
@@ -1369,11 +1373,10 @@ function selectGuessCategory(cat) {
 
 function buildAlphabetGrid() {
   const grid = document.getElementById('alphabetGrid');
-  grid.innerHTML = Object.keys(URDU_ALPHABETS).map(letter =>
-    `<button class="alpha-btn" id="alpha-${CSS.escape(letter)}" onclick="handleAlphaClick('${letter.replace(/'/g,"\\'")}')">
-      ${letter}
-    </button>`
-  ).join('');
+  grid.innerHTML = Object.keys(URDU_ALPHABETS).map(letter => {
+    const safe = encodeURIComponent(letter);
+    return `<button class="alpha-btn" data-letter="${safe}" onclick="handleAlphaClick(decodeURIComponent(this.dataset.letter))">${letter}</button>`;
+  }).join('');
 }
 
 function handleAlphaClick(letter) {
@@ -1384,7 +1387,8 @@ function handleAlphaClick(letter) {
 function newGuessWord() {
   const wordList = Object.keys(WORDS[guessCategory]);
   guessCurrentWord = wordList[Math.floor(Math.random() * wordList.length)];
-  guessCurrentLetters = WORDS[guessCategory][guessCurrentWord];
+  // Use Array.from to correctly split multi-codepoint Urdu characters
+  guessCurrentLetters = Array.from(guessCurrentWord);
   guessGuessed = new Array(guessCurrentLetters.length).fill('');
   guessUsedAlphas = new Set();
 
@@ -1400,14 +1404,29 @@ function newGuessWord() {
 
 function updateWordDisplay() {
   const display = document.getElementById('wordDisplay');
-  const shown = guessGuessed.map(l => l || '＿').join(' ');
-  display.textContent = shown;
   display.style.direction = 'rtl';
-
   const translation = WORD_TRANSLATIONS[guessCurrentWord] || '';
-  if (!guessGuessed.includes('') && translation) {
-    display.textContent = guessCurrentWord + ' = ' + translation;
+
+  if (!guessGuessed.includes('')) {
+    // All letters guessed — show full word in green + translation
+    display.innerHTML =
+      '<span style="color:var(--teal-dark);font-size:1.1em">' + guessCurrentWord + '</span>' +
+      (translation ? '<br><small style="font-size:0.38em;color:#555;font-family:var(--font-body);">(' + translation + ')</small>' : '');
+    return;
   }
+
+  // KEY FIX: render full connected word but mask hidden letters with dotted circles
+  // By rendering the whole word string with spans, the browser shapes letters correctly
+  const chars = Array.from(guessCurrentWord); // split by Unicode code point
+  const spans = chars.map((ch, i) => {
+    const revealed = guessGuessed[i] !== '';
+    if (revealed) return '<span style="color:var(--blue-dark)">' + ch + '</span>';
+    return '<span style="color:#bbb">_</span>';
+  }).join('');
+
+  display.innerHTML =
+    '<span style="letter-spacing:3px;direction:rtl;">' + spans + '</span>' +
+    (translation ? '<br><small style="font-size:0.38em;color:#888;font-family:var(--font-body);">(' + translation + ')</small>' : '');
 }
 
 function checkGuessLetter(letter) {
@@ -1420,7 +1439,7 @@ function checkGuessLetter(letter) {
   }
 
   guessUsedAlphas.add(letter);
-  const btn = document.querySelector(`#alphabetGrid .alpha-btn:nth-child(${Object.keys(URDU_ALPHABETS).indexOf(letter)+1})`);
+  markAlphaUsed(letter);
 
   if (found) {
     flashWord('correct');
@@ -1436,18 +1455,13 @@ function checkGuessLetter(letter) {
     guessWrong++;
     document.getElementById('guessWrong').textContent = guessWrong;
     flashWord('wrong');
-    // Mark button as used
-    markAlphaUsed(letter);
   }
 }
 
 function markAlphaUsed(letter) {
-  const keys = Object.keys(URDU_ALPHABETS);
-  const idx = keys.indexOf(letter);
-  if (idx >= 0) {
-    const btns = document.querySelectorAll('.alpha-btn');
-    if (btns[idx]) btns[idx].classList.add('used');
-  }
+  const safe = encodeURIComponent(letter);
+  const btn = document.querySelector(`.alpha-btn[data-letter="${safe}"]`);
+  if (btn) btn.classList.add('used');
 }
 
 function flashWord(type) {
@@ -1623,9 +1637,11 @@ function loadDescribeImage(idx) {
   const img = document.getElementById('describeImage');
   img.src = data.src;
 
-  descShuffledSentences = shuffleArray([...data.sentences.entries()].map(([i,s]) => ({
+  // Build sentence objects with correct/wrong flag
+  const sentenceObjs = data.sentences.map((s, i) => ({
     text: s, isCorrect: i < data.correctCount, idx: i
-  })));
+  }));
+  descShuffledSentences = shuffleArray(sentenceObjs);
 
   renderDescribeSentences();
 }
@@ -1699,7 +1715,7 @@ function selectDragCategory(cat) {
 function newDragWord() {
   const wordList = Object.keys(WORDS[dragCategory]);
   dragCurrentWord = wordList[Math.floor(Math.random() * wordList.length)];
-  dragCurrentLetters = WORDS[dragCategory][dragCurrentWord];
+  dragCurrentLetters = Array.from(dragCurrentWord); // proper Unicode split
   dragAnswer = [];
 
   // Build pool: correct letters + some random extras
@@ -1709,9 +1725,11 @@ function newDragWord() {
   dragPool = shuffleArray([...dragCurrentLetters, ...extraPick]);
 
   const translation = WORD_TRANSLATIONS[dragCurrentWord] || '';
+  // Show blank slots equal to number of letters (not isolated chars)
+  const blanks = Array.from(dragCurrentWord).map(() => '<span style="display:inline-block;width:1.2em;border-bottom:3px solid var(--blue);margin:0 3px;">&#8203;</span>').join('');
   document.getElementById('dragTargetWord').innerHTML =
-    `<span style="direction:rtl;">${dragCurrentLetters.map(() => '_ ').join('')}</span>` +
-    (translation ? `<br><small style="font-size:0.45em;color:#888;font-family:var(--font-body);">(${translation})</small>` : '');
+    '<span style="direction:rtl;font-size:0.7em;letter-spacing:4px;">' + blanks + '</span>' +
+    (translation ? '<br><small style="font-size:0.45em;color:#888;font-family:var(--font-body);">(' + translation + ')</small>' : '');
 
   document.getElementById('dragResult').className = 'result-banner';
   renderDragPool();
@@ -1725,9 +1743,19 @@ function renderDragPool() {
 }
 
 function renderDropZone() {
-  document.getElementById('dropZone').innerHTML = dragAnswer.map((letter, i) =>
-    `<div class="letter-tile in-drop" onclick="removeLetter(${i})">${letter}</div>`
-  ).join('');
+  const zone = document.getElementById('dropZone');
+  if (dragAnswer.length === 0) {
+    zone.innerHTML = '<span style="color:#bbb;font-weight:700;font-size:0.9rem;">Tap letters below to add them here...</span>';
+    return;
+  }
+  // Show connected preview of built word so far + individual removable tiles
+  const preview = dragAnswer.join('');
+  zone.innerHTML =
+    '<div style="width:100%;text-align:center;direction:rtl;font-size:1.8rem;color:var(--teal-dark);font-weight:700;margin-bottom:8px;letter-spacing:2px;">' + preview + '</div>' +
+    '<div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;direction:rtl;">' +
+    dragAnswer.map((letter, i) =>
+      `<div class="letter-tile in-drop" onclick="removeLetter(${i})" title="Tap to remove">${letter}</div>`
+    ).join('') + '</div>';
 }
 
 function pickLetter(idx) {
@@ -1752,7 +1780,7 @@ function clearDragAnswer() {
 }
 
 function checkDragAnswer() {
-  const correct = dragCurrentLetters.join('') === dragAnswer.join('');
+  const correct = Array.from(dragCurrentWord).join('') === dragAnswer.join('');
   const result = document.getElementById('dragResult');
   result.classList.add('show');
 
