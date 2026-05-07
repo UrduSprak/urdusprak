@@ -1,118 +1,1890 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urdu Språk</title>
-    <!-- Bootstrap CSS -->
-    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="style/css_style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urdu Språk 🌟 Learn Urdu & Swedish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== ROOT & RESET ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sky: #e8f4ff;
+  --blue: #4FACFE;
+  --blue-dark: #0082C8;
+  --teal: #43e97b;
+  --teal-dark: #1fa856;
+  --coral: #ff6b6b;
+  --coral-dark: #d94f4f;
+  --sun: #FFD93D;
+  --sun-dark: #e5ba00;
+  --purple: #a78bfa;
+  --purple-dark: #7c3aed;
+  --pink: #f472b6;
+  --white: #ffffff;
+  --text: #2d3436;
+  --text-light: #636e72;
+  --shadow: 0 8px 32px rgba(79,172,254,0.18);
+  --shadow-btn: 0 6px 0 var(--blue-dark);
+  --radius: 20px;
+  --font-display: 'Fredoka One', cursive;
+  --font-body: 'Nunito', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--sky);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Floating stars background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(255,217,61,0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(167,139,250,0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(79,172,254,0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== HEADER / NAV ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, #4FACFE 0%, #00c9ff 100%);
+  box-shadow: 0 4px 20px rgba(79,172,254,0.4);
+  padding: 0 20px;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo-emoji {
+  font-size: 2.2rem;
+  animation: wobble 3s ease-in-out infinite;
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: white;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+  letter-spacing: 1px;
+}
+
+.logo-sub {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  background: white;
+  color: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ===== MAIN LAYOUT ===== */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--blue-dark);
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.page-title .emoji {
+  display: inline-block;
+  animation: bounce 1.5s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ===== CARDS / CONTAINERS ===== */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--blue), var(--teal), var(--sun), var(--coral));
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  font-family: var(--font-body);
+  font-weight: 800;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.btn:active { transform: translateY(3px) !important; box-shadow: none !important; }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue) 0%, #0070e0 100%);
+  color: white;
+  padding: 12px 28px;
+  font-size: 1rem;
+  box-shadow: 0 5px 0 var(--blue-dark);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--blue-dark); }
+
+.btn-success {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+  color: white;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 0 var(--teal-dark);
+}
+.btn-success:hover { transform: translateY(-2px); }
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 100%);
+  color: white;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 0 var(--coral-dark);
+}
+
+.btn-sun {
+  background: linear-gradient(135deg, var(--sun) 0%, #f0a500 100%);
+  color: #5a3800;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 0 var(--sun-dark);
+}
+.btn-sun:hover { transform: translateY(-2px); }
+
+.btn-purple {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+  color: white;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 0 var(--purple-dark);
+}
+.btn-purple:hover { transform: translateY(-2px); }
+
+/* ===== SCORE BADGES ===== */
+.score-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.score-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.score-badge.correct { background: #d1fae5; color: #065f46; }
+.score-badge.wrong { background: #fee2e2; color: #991b1b; }
+
+/* ===== SECTION VISIBILITY ===== */
+.game-section { display: none; animation: fadeIn 0.4s ease; }
+.game-section.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== HOME PAGE ===== */
+.home-hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.home-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  background: linear-gradient(135deg, var(--blue-dark), var(--purple-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+
+.home-hero .subtitle {
+  font-size: 1.15rem;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.lang-flags {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.lang-flags .arrow {
+  font-size: 1.5rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.game-card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.game-card:nth-child(1) { border-color: var(--blue); }
+.game-card:nth-child(2) { border-color: var(--teal); }
+.game-card:nth-child(3) { border-color: var(--coral); }
+.game-card:nth-child(4) { border-color: var(--sun); }
+.game-card:nth-child(5) { border-color: var(--purple); }
+.game-card:nth-child(6) { border-color: var(--pink); }
+
+.game-card:nth-child(1):hover { background: #eff8ff; }
+.game-card:nth-child(2):hover { background: #f0fff4; }
+.game-card:nth-child(3):hover { background: #fff5f5; }
+.game-card:nth-child(4):hover { background: #fffbeb; }
+.game-card:nth-child(5):hover { background: #f5f3ff; }
+.game-card:nth-child(6):hover { background: #fdf4ff; }
+
+.game-card .icon {
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.game-card:nth-child(2) .icon { animation-delay: 0.5s; }
+.game-card:nth-child(3) .icon { animation-delay: 1s; }
+.game-card:nth-child(4) .icon { animation-delay: 1.5s; }
+
+.game-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.game-card p {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.game-card .badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--sun);
+  color: #5a3800;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== GUESS WORD GAME ===== */
+.word-display-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.word-display {
+  background: linear-gradient(135deg, #f8faff, #e8f4ff);
+  border: 3px solid var(--blue);
+  border-radius: 16px;
+  padding: 16px 40px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  min-width: 200px;
+  text-align: center;
+  color: var(--blue-dark);
+  letter-spacing: 4px;
+  direction: rtl;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(79,172,254,0.2);
+}
+
+.word-display.correct-flash {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border-color: var(--teal);
+  animation: correctPop 0.5s ease;
+}
+
+.word-display.wrong-flash {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border-color: var(--coral);
+  animation: shake 0.4s ease;
+}
+
+@keyframes correctPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.play-audio-btn {
+  background: linear-gradient(135deg, var(--sun), #f0a500);
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--sun-dark);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play-audio-btn:hover { transform: translateY(-2px) scale(1.1); }
+.play-audio-btn:active { transform: translateY(2px); box-shadow: none; }
+
+.category-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.cat-tab {
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 2.5px solid var(--blue);
+  background: white;
+  color: var(--blue-dark);
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cat-tab:hover, .cat-tab.active {
+  background: var(--blue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79,172,254,0.35);
+}
+
+.alphabet-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  direction: rtl;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 16px;
+  background: #f8faff;
+  border-radius: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) transparent;
+}
+
+.alpha-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 2px solid rgba(255,107,107,0.3);
+  background: linear-gradient(135deg, #ff8a80, #ff6b6b);
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 0 var(--coral-dark);
+  font-family: 'Noto Nastaliq Urdu', 'Arial Unicode MS', serif;
+  line-height: 1;
+}
+
+.alpha-btn:hover {
+  transform: translateY(-4px) scale(1.12);
+  background: linear-gradient(135deg, #ff4757, #ff3333);
+  box-shadow: 0 6px 0 #b71c1c;
+}
+
+.alpha-btn:active { transform: translateY(2px); box-shadow: none; }
+
+.alpha-btn.used {
+  background: #dfe6e9;
+  color: #b2bec3;
+  box-shadow: none;
+  cursor: default;
+  transform: none;
+  border-color: #dfe6e9;
+}
+
+/* ===== MATCH IT GAME ===== */
+.level-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.level-tab {
+  padding: 9px 20px;
+  border-radius: 50px;
+  border: 2.5px solid var(--purple);
+  background: white;
+  color: var(--purple-dark);
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.level-tab:hover, .level-tab.active {
+  background: var(--purple);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(167,139,250,0.4);
+}
+
+.match-arena {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.match-column-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.match-column-title.urdu-title {
+  background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+  color: var(--purple-dark);
+  direction: rtl;
+}
+
+.match-column-title.swedish-title {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: var(--blue-dark);
+}
+
+.sentence-card {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 2.5px solid #e2e8f0;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.sentence-card.urdu { direction: rtl; font-size: 1rem; }
+
+.sentence-card:hover:not(.matched):not(.selected) {
+  transform: scale(1.02);
+  border-color: var(--purple);
+  box-shadow: 0 4px 16px rgba(167,139,250,0.25);
+}
+
+.sentence-card.selected {
+  border-color: var(--blue);
+  background: linear-gradient(135deg, #eff8ff, #dbeafe);
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(79,172,254,0.3);
+}
+
+.sentence-card.matched {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border-color: var(--teal);
+  cursor: default;
+  animation: matchPop 0.4s ease;
+  color: #065f46;
+}
+
+.sentence-card.wrong-flash-card {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border-color: var(--coral);
+  animation: shake 0.4s ease;
+}
+
+@keyframes matchPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ===== DESCRIBE IT ===== */
+.describe-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .describe-layout { grid-template-columns: 1fr; }
+  .match-arena { grid-template-columns: 1fr; }
+}
+
+.describe-image-wrap {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  aspect-ratio: 1;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.describe-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.describe-sentences {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.describe-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.sentence-option {
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 2.5px solid #e2e8f0;
+  background: white;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  direction: rtl;
+  text-align: right;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  line-height: 1.5;
+}
+
+.sentence-option:hover:not(.used-sentence) {
+  transform: translateX(-4px);
+  border-color: var(--blue);
+  background: #eff8ff;
+}
+
+.sentence-option.correct-sentence {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border-color: var(--teal);
+  color: #065f46;
+  cursor: default;
+  animation: matchPop 0.4s ease;
+}
+
+.sentence-option.wrong-sentence {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border-color: var(--coral);
+  animation: shake 0.4s ease;
+}
+
+.sentence-option.used-sentence {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.describe-nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* ===== DRAG & DROP (Letter Arrange) ===== */
+.drag-word-display {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.drag-target-word {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--blue-dark);
+  direction: rtl;
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+}
+
+.drag-instruction {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.drop-zone {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  min-height: 80px;
+  padding: 16px;
+  border: 3px dashed var(--blue);
+  border-radius: 20px;
+  background: #f8faff;
+  margin-bottom: 20px;
+  direction: rtl;
+  transition: all 0.2s;
+}
+
+.drop-zone.drag-over {
+  background: #e0f2fe;
+  border-color: var(--blue-dark);
+  box-shadow: 0 0 0 4px rgba(79,172,254,0.2);
+}
+
+.letter-tile {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--blue), #0070e0);
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 4px 0 var(--blue-dark);
+  transition: transform 0.15s, box-shadow 0.15s;
+  font-family: 'Noto Nastaliq Urdu', 'Arial Unicode MS', serif;
+  touch-action: none;
+}
+
+.letter-tile:hover { transform: translateY(-3px) scale(1.08); }
+.letter-tile.dragging { 
+  opacity: 0.5; 
+  cursor: grabbing;
+  transform: scale(1.15);
+}
+
+.letter-tile.in-drop {
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  box-shadow: 0 4px 0 var(--teal-dark);
+  cursor: pointer;
+}
+
+.letter-tile.in-drop:hover { transform: translateY(-3px); }
+
+.shuffled-pool {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background: #fff7ed;
+  border-radius: 20px;
+  border: 2.5px solid var(--sun);
+  margin-bottom: 16px;
+  direction: rtl;
+  min-height: 80px;
+}
+
+.result-banner {
+  text-align: center;
+  padding: 16px;
+  border-radius: 16px;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  display: none;
+}
+
+.result-banner.show { display: block; animation: fadeIn 0.3s ease; }
+.result-banner.success { background: #d1fae5; color: #065f46; }
+.result-banner.fail { background: #fee2e2; color: #991b1b; }
+
+/* ===== ALPHABET EXPLORER ===== */
+.alphabet-explorer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 12px;
+  direction: rtl;
+}
+
+.alpha-card {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid transparent;
+}
+
+.alpha-card:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  border-color: var(--blue);
+}
+
+.alpha-card .char {
+  font-size: 1.8rem;
+  display: block;
+  font-family: 'Noto Nastaliq Urdu', 'Arial Unicode MS', serif;
+  color: var(--blue-dark);
+}
+
+.alpha-card .romanize {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ===== PROGRESS / CONFETTI ===== */
+.progress-bar-wrap {
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+  border-radius: 50px;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* confetti burst */
+.confetti-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confettiFall 1.5s ease-in forwards;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-top: 2px solid rgba(79,172,254,0.15);
+  margin-top: 40px;
+}
+
+/* ===== TOOLTIP ===== */
+.tooltip-badge {
+  display: inline-block;
+  background: var(--sun);
+  color: #5a3800;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-weight: 800;
+  margin-left: 8px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .nav-links a { padding: 6px 10px; font-size: 0.78rem; }
+  .logo-text { font-size: 1.4rem; }
+  .card { padding: 16px; }
+}
+</style>
 </head>
-
 <body>
-    <div class="container-fluid m-0 p-0 d-flex flex-column justify-content-between" style="min-height: 100vh;">
-        <header>
-            <nav class="navbar navbar-expand-xxl bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand d-flex flex-row align-items-center" href="index.html">
-                        <img src="media/page_imgs/logo.png" alt="Logo" height="100" class="d-inline-block align-text-top">
-                        <span class="rocher-font" style="font-size: 2em;">Urdu Språk</span>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link rocher-font navbar-pages active" href="index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rocher-font navbar-pages active" href="pages/drag-drop.html">Drag And Drop</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rocher-font navbar-pages active" href="pages/describe-it.html">Describe It</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rocher-font navbar-pages active" href="pages/guess-words.html">Guess Word</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rocher-font navbar-pages " href="#">Match It</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rocher-font navbar-pages " href="#">Translate It</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
 
-        <main class="flex-grow-1">
-            <div class="row">
-                <div class="col-12 page-title-bar">
-                    <span class="text-center rocher-font">Home</span>
-                </div>
-            </div>
+<!-- Confetti container -->
+<div class="confetti-container" id="confettiContainer"></div>
 
-            <!-- <div class="body-text">
-                <div class="title">Responsive Dropdown and Mega Menu</div>
-                <div class="sub-title">using only HTML & CSS</div>
-            </div> -->
+<!-- HEADER -->
+<header>
+  <div class="nav-inner">
+    <div class="logo" onclick="showPage('home')">
+      <span class="logo-emoji">🌙</span>
+      <div>
+        <div class="logo-text">Urdu Språk</div>
+        <div class="logo-sub">اردو سویڈش سیکھیں</div>
+      </div>
+    </div>
+    <ul class="nav-links" id="mainNav">
+      <li><a href="#" onclick="showPage('home')" data-page="home" class="active">🏠 Home</a></li>
+      <li><a href="#" onclick="showPage('guess')" data-page="guess">🔤 Guess Word</a></li>
+      <li><a href="#" onclick="showPage('match')" data-page="match">🔗 Match It</a></li>
+      <li><a href="#" onclick="showPage('describe')" data-page="describe">🖼️ Describe It</a></li>
+      <li><a href="#" onclick="showPage('drag')" data-page="drag">🧩 Drag & Drop</a></li>
+    </ul>
+  </div>
+</header>
 
-            <!-- <div class="container mt-4" style="padding-top: 0vh;">
-                <div class="row">
-                    <div class="col-12">
-                        <div id="dragDrop_animator" style="border: 1px solid black;"></div>
-                    </div>
-                </div>
-            </div> -->
-            <div id="drag_drop" class="flex-grow-1"></div>
-            <!-- This ID should match the target in your p5.js script -->
-        </main>
+<main>
 
-        <footer class="text-center text-lg-start">
-            <!-- <div class="container-fluid pt-4" style="background-color: #0dcaf0;">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                            <h5 class="text-uppercase">Contact Details</h5>
-                            <p>
-                                <strong>Address:</strong> 123 Street Name, City, Country<br>
-                                <strong>Phone:</strong> +123 456 7890<br>
-                                <strong>Email:</strong> contact@example.com
-                            </p>
-                        </div>
+<!-- ===================== HOME PAGE ===================== -->
+<section id="page-home" class="game-section active">
+  <div class="home-hero">
+    <div class="lang-flags">
+      <span>🇵🇰</span>
+      <span class="arrow">⇄</span>
+      <span>🇸🇪</span>
+    </div>
+    <h1>Lär dig Urdu! <br><span style="font-size:0.8em">اردو سیکھیں!</span></h1>
+    <p class="subtitle">Fun games to learn Urdu & Swedish together 🎮✨</p>
+  </div>
 
-                        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                            <h5 class="text-uppercase">Social Media</h5>
-                            <p>
-                                <strong>Follow us on:</strong><br>
-                                Twitter: <a href="#" class="link-dark">@YourTwitter</a><br>
-                                Facebook: <a href="#" class="link-dark">Your Facebook Page</a><br>
-                                Instagram: <a href="#" class="link-dark">@YourInstagram</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+  <div class="games-grid">
+    <div class="game-card" onclick="showPage('guess')">
+      <span class="icon">🔤</span>
+      <h3>Guess the Word</h3>
+      <p>Click letters to spell Urdu words</p>
+      <span class="badge">Letters</span>
+    </div>
+    <div class="game-card" onclick="showPage('match')">
+      <span class="icon">🔗</span>
+      <h3>Match It!</h3>
+      <p>Match Urdu & Swedish sentences</p>
+      <span class="badge">Sentences</span>
+    </div>
+    <div class="game-card" onclick="showPage('describe')">
+      <span class="icon">🖼️</span>
+      <h3>Describe It</h3>
+      <p>Pick the sentence that describes the picture</p>
+      <span class="badge">Pictures</span>
+    </div>
+    <div class="game-card" onclick="showPage('drag')">
+      <span class="icon">🧩</span>
+      <h3>Drag & Drop</h3>
+      <p>Arrange letters to build Urdu words</p>
+      <span class="badge">Build</span>
+    </div>
+    <div class="game-card" onclick="showPage('alphabet')">
+      <span class="icon">ا</span>
+      <h3>Alphabet</h3>
+      <p>Explore all Urdu letters</p>
+      <span class="badge">ABCs</span>
+    </div>
+    <div class="game-card" onclick="showPage('translate')">
+      <span class="icon">💬</span>
+      <h3>Phrase Book</h3>
+      <p>Common Urdu–Swedish phrases</p>
+      <span class="badge">Speak</span>
+    </div>
+  </div>
+</section>
 
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2024 UrduSpråk: All Rights Reserved
-            </div>
-        </footer>
+<!-- ===================== GUESS WORD ===================== -->
+<section id="page-guess" class="game-section">
+  <div class="page-title"><span class="emoji">🔤</span> Guess the Word</div>
 
+  <div class="card" style="margin-bottom:16px;">
+    <div class="score-row">
+      <div class="score-badge correct">✅ Correct: <span id="guessCorrect">0</span></div>
+      <div class="score-badge wrong">❌ Wrong: <span id="guessWrong">0</span></div>
     </div>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <!-- p5.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <!-- Your custom p5.js script -->
-    <!-- <script src="js/home_animator.js"></script> -->
-</body>
+    <div class="category-tabs" id="categoryTabs"></div>
 
+    <div class="word-display-wrap">
+      <div class="word-display" id="wordDisplay">_ _</div>
+      <button class="play-audio-btn" onclick="playCurrentAudio()" title="Hear the word">🔊</button>
+    </div>
+
+    <div class="alphabet-grid" id="alphabetGrid"></div>
+
+    <div style="text-align:center; margin-top:16px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn btn-danger" onclick="resetGuessGame()">🔄 New Word</button>
+      <button class="btn btn-sun" onclick="resetGuessScores()">📊 Reset Score</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MATCH IT ===================== -->
+<section id="page-match" class="game-section">
+  <div class="page-title"><span class="emoji">🔗</span> Match It!</div>
+
+  <div class="card">
+    <div class="level-tabs" id="levelTabs"></div>
+
+    <div class="score-row">
+      <div class="score-badge correct">✅ Matched: <span id="matchCorrect">0</span></div>
+      <div class="score-badge wrong">❌ Wrong: <span id="matchWrong">0</span></div>
+    </div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="matchProgress" style="width:0%"></div>
+    </div>
+
+    <div class="match-arena">
+      <div>
+        <div class="match-column-title urdu-title">🌙 اردو (Urdu)</div>
+        <div id="urduColumn"></div>
+      </div>
+      <div>
+        <div class="match-column-title swedish-title">🇸🇪 Svenska (Swedish)</div>
+        <div id="swedishColumn"></div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn btn-purple" onclick="refreshMatchGame()">🔀 Shuffle</button>
+      <button class="btn btn-sun" onclick="resetMatchScores()">📊 Reset Score</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DESCRIBE IT ===================== -->
+<section id="page-describe" class="game-section">
+  <div class="page-title"><span class="emoji">🖼️</span> Describe It</div>
+
+  <div class="card">
+    <div class="score-row">
+      <div class="score-badge correct">✅ Correct: <span id="descCorrect">0</span></div>
+      <div class="score-badge wrong">❌ Wrong: <span id="descWrong">0</span></div>
+    </div>
+
+    <div class="describe-layout">
+      <div class="describe-image-wrap" id="describeImageWrap">
+        <img id="describeImage" src="" alt="Describe this picture" onerror="this.parentElement.innerHTML='<div style=\'font-size:5rem;text-align:center;\'>🖼️<br><small style=\'font-size:0.3em;color:#aaa;\'>Image not found</small></div>'">
+      </div>
+      <div>
+        <div class="describe-title">🎯 Which sentence describes this picture?</div>
+        <div class="describe-sentences" id="describeSentences"></div>
+      </div>
+    </div>
+
+    <div class="describe-nav">
+      <button class="btn btn-primary" onclick="prevDescribeImage()">⬅️ Previous</button>
+      <button class="btn btn-success" onclick="nextDescribeImage()">Next ➡️</button>
+      <button class="btn btn-sun" onclick="shuffleDescribeSentences()">🔀 Shuffle Options</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DRAG & DROP ===================== -->
+<section id="page-drag" class="game-section">
+  <div class="page-title"><span class="emoji">🧩</span> Drag & Drop</div>
+
+  <div class="card">
+    <div class="score-row">
+      <div class="score-badge correct">✅ Solved: <span id="dragCorrect">0</span></div>
+      <div class="score-badge wrong">❌ Wrong: <span id="dragWrong">0</span></div>
+    </div>
+
+    <div class="category-tabs" id="dragCategoryTabs" style="margin-bottom:16px;"></div>
+
+    <div class="drag-word-display">
+      <div class="drag-target-word" id="dragTargetWord"></div>
+      <div class="drag-instruction">Tap letters below to build the word! 👆</div>
+    </div>
+
+    <div style="font-size:0.85rem;color:var(--text-light);font-weight:700;text-align:center;margin-bottom:6px;">✏️ Your Answer (tap to remove)</div>
+    <div class="drop-zone" id="dropZone"></div>
+
+    <div style="font-size:0.85rem;color:var(--text-light);font-weight:700;text-align:center;margin-bottom:6px;">🔤 Available Letters</div>
+    <div class="shuffled-pool" id="shuffledPool"></div>
+
+    <div class="result-banner" id="dragResult"></div>
+
+    <div style="text-align:center; margin-top:16px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="checkDragAnswer()">✅ Check!</button>
+      <button class="btn btn-danger" onclick="resetDragGame()">🔄 New Word</button>
+      <button class="btn btn-sun" onclick="clearDragAnswer()">🗑️ Clear</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ALPHABET EXPLORER ===================== -->
+<section id="page-alphabet" class="game-section">
+  <div class="page-title"><span class="emoji">ا</span> Urdu Alphabet</div>
+  <div class="card">
+    <p style="text-align:center;color:var(--text-light);font-weight:700;margin-bottom:20px;">Tap any letter to hear its name! 🔊</p>
+    <div class="alphabet-explorer" id="alphabetExplorer"></div>
+  </div>
+</section>
+
+<!-- ===================== PHRASE BOOK ===================== -->
+<section id="page-translate" class="game-section">
+  <div class="page-title"><span class="emoji">💬</span> Phrase Book</div>
+  <div class="card" id="phraseBookContainer"></div>
+</section>
+
+</main>
+
+<footer>
+  🌙 Urdu Språk — Learn Urdu & Swedish Together &nbsp;|&nbsp; © 2024 &nbsp;|&nbsp; Made with ❤️ for young learners
+</footer>
+
+<script>
+/* =====================================================
+   DATA
+===================================================== */
+const URDU_ALPHABETS = {
+  "آ":"آ","ا":"ا","ب":"ب","پ":"پ","ت":"ت","ٹ":"ٹ","ث":"ث",
+  "ج":"ج","چ":"چ","ح":"ح","خ":"خ","د":"د","ڈ":"ڈ","ذ":"ذ",
+  "ر":"ر","ڑ":"ڑ","ز":"ز","س":"س","ش":"ش","ص":"ص","ض":"ض",
+  "ط":"ط","ظ":"ظ","ع":"ع","غ":"غ","ف":"ف","ق":"ق","ک":"ک",
+  "گ":"گ","ل":"ل","م":"م","ن":"ن","و":"و","ہ":"ہ","ھ":"ھ",
+  "ی":"ی","ے":"ے","ء":"ء","ؤ":"ؤ","ئ":"ئ","ں":"ں"
+};
+
+const ALPHA_ROMAN = {
+  "آ":"aa","ا":"a","ب":"b","پ":"p","ت":"t","ٹ":"tt","ث":"s",
+  "ج":"j","چ":"ch","ح":"h","خ":"kh","د":"d","ڈ":"dd","ذ":"z",
+  "ر":"r","ڑ":"rr","ز":"z","س":"s","ش":"sh","ص":"s","ض":"z",
+  "ط":"t","ظ":"z","ع":"a'","غ":"gh","ف":"f","ق":"q","ک":"k",
+  "گ":"g","ل":"l","م":"m","ن":"n","و":"w","ہ":"h","ھ":"h",
+  "ی":"y","ے":"e","ء":"'","ؤ":"o","ئ":"y","ں":"n"
+};
+
+const WORDS = {
+  Two:   {"آؤ":["آ","ؤ"],"آب":["آ","ب"],"آج":["آ","ج"],"آم":["آ","م"],"بل":["ب","ل"],"بو":["ب","و"],"تب":["ت","ب"],"تر":["ت","ر"],"جب":["ج","ب"],"لو":["ل","و"],"پر":["پ","ر"],"کم":["ک","م"]},
+  Three: {"آئی":["آ","ئ","ی"],"آئے":["آ","ئ","ے"],"بہت":["ب","ہ","ت"],"بہن":["ب","ہ","ن"],"بیس":["ب","ی","س"],"تیل":["ت","ی","ل"],"مور":["م","و","ر"],"ناؤ":["ن","ا","ؤ"],"نوٹ":["ن","و","ٹ"],"چیل":["چ","ی","ل"]},
+  Four:  {"بادل":["ب","ا","د","ل"],"بستہ":["ب","س","ت","ہ"],"تالے":["ت","ا","ل","ے"],"دودھ":["د","و","د","ھ"],"طوطا":["ط","و","ط","ا"],"نہیں":["ن","ہ","ی","ں"],"پانی":["پ","ا","ن","ی"],"پھول":["پ","ھ","و","ل"],"کتاب":["ک","ت","ا","ب"],"گھاس":["گ","ھ","ا","س"]},
+  Five:  {"بھائی":["ب","ھ","ا","ئ","ی"],"بھالو":["ب","ھ","ا","ل","و"],"تھوڑی":["ت","ھ","و","ڑ","ی"],"دھوئی":["د","ھ","و","ئ","ی"],"کھائی":["ک","ھ","ا","ئ","ی"],"کھوئی":["ک","ھ","و","ئ","ی"]},
+  Six:   {"کھلاڑی":["ک","ھ","ل","ا","ڑ","ی"]}
+};
+
+const WORD_TRANSLATIONS = {
+  "آؤ":"Come","آب":"Water","آج":"Today","آم":"Mango","بل":"Bill/Leaf","بو":"Smell",
+  "تب":"Then","تر":"Wet","جب":"When","لو":"Take","پر":"But/Wing","کم":"Less",
+  "آئی":"She came","آئے":"He came","بہت":"Very","بہن":"Sister","بیس":"Twenty",
+  "تیل":"Oil","مور":"Peacock","ناؤ":"Boat","نوٹ":"Note","چیل":"Kite (bird)",
+  "بادل":"Cloud","بستہ":"Bag","تالے":"Locks","دودھ":"Milk","طوطا":"Parrot",
+  "نہیں":"No","پانی":"Water","پھول":"Flower","کتاب":"Book","گھاس":"Grass",
+  "بھائی":"Brother","بھالو":"Bear","تھوڑی":"A little","دھوئی":"Washed","کھائی":"She ate","کھوئی":"She lost",
+  "کھلاڑی":"Athlete"
+};
+
+const DESCRIBE_IMAGES = [
+  {
+    src: "media/pages/describe_it/0.png",
+    emoji: "👨",
+    sentences: [
+      "اک آدمی نے لال ٹوپی پہنی ہوئی ہے۔ (A man is wearing a red hat)",
+      "اس نے چشما پہنا ہے۔ (He is wearing glasses)",
+      "وہ ایک شیشے کے دروازے کے سامنے کھڑا ہے۔ (He stands before a glass door)",
+      "وہ خوش نظر آ رہا ہے۔ (He looks happy — WRONG)"
+    ],
+    correctCount: 3
+  },
+  {
+    src: "media/pages/describe_it/1.png",
+    emoji: "🛝",
+    sentences: [
+      "سات بچے کھیل رہے ہیں۔ (Seven children are playing)",
+      "بچہ پتنگ اڑا رہا ہے۔ (A child is flying a kite)",
+      "لڑکے نے ایک تلوار پکڑی ہوئی ہے۔ (A boy is holding a sword)",
+      "کھیل کے میدان میں سلائیڈ ہیں۔ (There are slides in the playground)",
+      "باغ میں درخت ہیں۔ (There are trees in the garden — WRONG)"
+    ],
+    correctCount: 4
+  },
+  {
+    src: "media/pages/describe_it/2.png",
+    emoji: "🌤️",
+    sentences: [
+      "سورج چمک رہا ہے۔ (The sun is shining)",
+      "پودوں کا گملا باغ میں ہے۔ (A flowerpot is in the garden)",
+      "آسمان میں بادل ہیں۔ (There are clouds in the sky)",
+      "باغ میں ایک پانی کا نل ہے۔ (There is a water tap in the garden)",
+      "رات بہت ٹھنڈی ہے۔ (The night is cold — WRONG)"
+    ],
+    correctCount: 4
+  },
+  {
+    src: "media/pages/describe_it/3.png",
+    emoji: "🐕",
+    sentences: [
+      "لڑکی اپنے کتے کے ساتھ چل رہی ہے۔ (A girl is walking with her dog)",
+      "لڑکی کے ہاتھ میں بیگ اور موبائل ہے۔ (She holds a bag and phone)",
+      "باغ میں دو درخت ہیں۔ (There are two trees in the garden)",
+      "کتے کا رنگ بھورا ہے۔ (The dog is brown)",
+      "آسمان پر ستارے ہیں۔ (There are stars in the sky — WRONG)"
+    ],
+    correctCount: 4
+  }
+];
+
+const MATCH_LEVELS = {
+  "Level 1": {
+    urdu:["میں نے کھانا کھایا","آج موسم اچھا ہے","وہ کتاب پڑھ رہی ہے","میرا نام علی ہے","میں اسکول جا رہا ہوں","میز پر کتاب ہے","باہر بارش ہو رہی ہے","یہ میرا دوست ہے"],
+    swedish:["Jag åt mat","Vädret är bra idag","Hon läser en bok","Mitt namn är Ali","Jag går till skolan","Det finns en bok på bordet","Det regnar ute","Det här är min vän"]
+  },
+  "Level 2": {
+    urdu:["ہم پارک میں چہل قدمی کر رہے ہیں","کیا ہم کل ملاقات کر سکتے ہیں؟","یہ کتاب میری بہن کی ہے","میں نے سویڈن میں تعلیم حاصل کی","آپ کا پسندیدہ رنگ کیا ہے؟","میری بلی نے چوہا پکڑا","بازار میں بہت بھیڑ ہے","میں رات کا کھانا تیار کر رہا ہوں"],
+    swedish:["Vi promenerar i parken","Kan vi träffas imorgon?","Den här boken är min systers","Jag studerade i Sverige","Vad är din favoritfärg?","Min katt fångade en mus","Det är mycket folk på marknaden","Jag förbereder middagen"]
+  },
+  "Level 3": {
+    urdu:["وہ ہر صبح جاگنگ کرتی ہے","اس نے کہا کہ وہ کل آئے گا","وہ کتابوں کی دکان پر کام کرتا ہے","اس نے ایک لمبی داستان سنائی","میں نے اپنی چابیاں کہیں کھو دی ہیں","وہ ہمیشہ مسکراتا ہے","بچے باغ میں کھیل رہے ہیں","میں کافی پینا پسند کرتا ہوں"],
+    swedish:["Hon joggar varje morgon","Han sa att han kommer imorgon","Han arbetar i en bokhandel","Han berättade en lång historia","Jag har tappat bort mina nycklar","Han ler alltid","Barnen leker i trädgården","Jag gillar att dricka kaffe"]
+  },
+  "Level 4": {
+    urdu:["میں نے اپنے دوست کو ایک تحفہ دیا","ہم نے سویڈن کے تاریخی مقامات کا دورہ کیا","اس نے مجھے ایک مسئلہ حل کرنے میں مدد کی","وہ ہر روز کتابیں پڑھتی ہے","میں نے اسے کہا کہ وہ وقت پر آئے","خاندانی اجتماع بہت خوشگوار تھا","بچے اپنے کھلونوں سے کھیل رہے ہیں","درخت پر پھل لگے ہیں"],
+    swedish:["Jag gav min vän en present","Vi besökte historiska platser i Sverige","Hon hjälpte mig att lösa ett problem","Hon läser böcker varje dag","Jag bad honom komma i tid","Familjesamlingen var mycket trevlig","Barnen leker med sina leksaker","Det finns frukt på trädet"]
+  }
+};
+
+const PHRASES = [
+  {urdu:"آپ کا نام کیا ہے؟", swedish:"Vad heter du?", english:"What is your name?"},
+  {urdu:"میرا نام ___ ہے۔", swedish:"Jag heter ___.", english:"My name is ___."},
+  {urdu:"آپ کیسے ہیں؟", swedish:"Hur mår du?", english:"How are you?"},
+  {urdu:"میں ٹھیک ہوں۔", swedish:"Jag mår bra.", english:"I am fine."},
+  {urdu:"شکریہ", swedish:"Tack", english:"Thank you"},
+  {urdu:"خوش آمدید", swedish:"Välkommen", english:"Welcome"},
+  {urdu:"معاف کیجیے", swedish:"Förlåt mig", english:"Excuse me"},
+  {urdu:"کہاں ہے؟", swedish:"Var är?", english:"Where is?"},
+  {urdu:"یہ کیا ہے؟", swedish:"Vad är det här?", english:"What is this?"},
+  {urdu:"میں سمجھ نہیں سکا۔", swedish:"Jag förstår inte.", english:"I don't understand."},
+  {urdu:"دوبارہ کہیں۔", swedish:"Säg om igen.", english:"Say it again."},
+  {urdu:"پانی", swedish:"Vatten", english:"Water"},
+  {urdu:"کھانا", swedish:"Mat", english:"Food"},
+  {urdu:"اسکول", swedish:"Skola", english:"School"},
+  {urdu:"گھر", swedish:"Hem", english:"Home"},
+  {urdu:"کتاب", swedish:"Bok", english:"Book"},
+  {urdu:"دوست", swedish:"Vän", english:"Friend"},
+  {urdu:"خوبصورت", swedish:"Vacker", english:"Beautiful"},
+  {urdu:"اچھا", swedish:"Bra", english:"Good"},
+  {urdu:"برا", swedish:"Dålig", english:"Bad"}
+];
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+function showPage(name) {
+  document.querySelectorAll('.game-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+
+  document.querySelectorAll('[data-page]').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === name);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Initialize on first visit
+  if (name === 'guess' && !guessInit) initGuessGame();
+  if (name === 'match' && !matchInit) initMatchGame();
+  if (name === 'describe' && !describeInit) initDescribeGame();
+  if (name === 'drag' && !dragInit) initDragGame();
+  if (name === 'alphabet' && !alphabetInit) initAlphabetExplorer();
+  if (name === 'translate') initPhraseBook();
+}
+
+/* =====================================================
+   GUESS WORD GAME
+===================================================== */
+let guessInit = false;
+let guessCorrect = 0, guessWrong = 0;
+let guessCategory = 'Two';
+let guessCurrentWord = '';
+let guessCurrentLetters = [];
+let guessGuessed = [];
+let guessAudio = null;
+let guessUsedAlphas = new Set();
+
+function initGuessGame() {
+  guessInit = true;
+  // Build category tabs
+  const tabs = document.getElementById('categoryTabs');
+  tabs.innerHTML = ['Two','Three','Four','Five','Six'].map(c =>
+    `<button class="cat-tab ${c==='Two'?'active':''}" onclick="selectGuessCategory('${c}')">${c} Letters</button>`
+  ).join('');
+
+  buildAlphabetGrid();
+  newGuessWord();
+}
+
+function selectGuessCategory(cat) {
+  guessCategory = cat;
+  document.querySelectorAll('.cat-tab').forEach((t,i) => {
+    t.classList.toggle('active', ['Two','Three','Four','Five','Six'][i] === cat);
+  });
+  newGuessWord();
+}
+
+function buildAlphabetGrid() {
+  const grid = document.getElementById('alphabetGrid');
+  grid.innerHTML = Object.keys(URDU_ALPHABETS).map(letter =>
+    `<button class="alpha-btn" id="alpha-${CSS.escape(letter)}" onclick="handleAlphaClick('${letter.replace(/'/g,"\\'")}')">
+      ${letter}
+    </button>`
+  ).join('');
+}
+
+function handleAlphaClick(letter) {
+  if (guessUsedAlphas.has(letter)) return;
+  checkGuessLetter(letter);
+}
+
+function newGuessWord() {
+  const wordList = Object.keys(WORDS[guessCategory]);
+  guessCurrentWord = wordList[Math.floor(Math.random() * wordList.length)];
+  guessCurrentLetters = WORDS[guessCategory][guessCurrentWord];
+  guessGuessed = new Array(guessCurrentLetters.length).fill('');
+  guessUsedAlphas = new Set();
+
+  updateWordDisplay();
+  buildAlphabetGrid();
+
+  // Load audio — filenames use #UXXXX encoding for non-ASCII chars
+  // File is at root level (same as index.html), so path is media/... not ../media/...
+  const encodedWord = toHashUnicode(guessCurrentWord);
+  const audioPath = `media/audio/words/${guessCategory} Letters/${encodedWord}.m4a`;
+  guessAudio = new Audio(audioPath);
+}
+
+function updateWordDisplay() {
+  const display = document.getElementById('wordDisplay');
+  const shown = guessGuessed.map(l => l || '＿').join(' ');
+  display.textContent = shown;
+  display.style.direction = 'rtl';
+
+  const translation = WORD_TRANSLATIONS[guessCurrentWord] || '';
+  if (!guessGuessed.includes('') && translation) {
+    display.textContent = guessCurrentWord + ' = ' + translation;
+  }
+}
+
+function checkGuessLetter(letter) {
+  let found = false;
+  for (let i = 0; i < guessCurrentLetters.length; i++) {
+    if (guessCurrentLetters[i] === letter && guessGuessed[i] === '') {
+      guessGuessed[i] = letter;
+      found = true;
+    }
+  }
+
+  guessUsedAlphas.add(letter);
+  const btn = document.querySelector(`#alphabetGrid .alpha-btn:nth-child(${Object.keys(URDU_ALPHABETS).indexOf(letter)+1})`);
+
+  if (found) {
+    flashWord('correct');
+    updateWordDisplay();
+
+    if (!guessGuessed.includes('')) {
+      guessCorrect++;
+      document.getElementById('guessCorrect').textContent = guessCorrect;
+      launchConfetti();
+      setTimeout(newGuessWord, 1800);
+    }
+  } else {
+    guessWrong++;
+    document.getElementById('guessWrong').textContent = guessWrong;
+    flashWord('wrong');
+    // Mark button as used
+    markAlphaUsed(letter);
+  }
+}
+
+function markAlphaUsed(letter) {
+  const keys = Object.keys(URDU_ALPHABETS);
+  const idx = keys.indexOf(letter);
+  if (idx >= 0) {
+    const btns = document.querySelectorAll('.alpha-btn');
+    if (btns[idx]) btns[idx].classList.add('used');
+  }
+}
+
+function flashWord(type) {
+  const d = document.getElementById('wordDisplay');
+  d.classList.add(type + '-flash');
+  setTimeout(() => d.classList.remove(type + '-flash'), 600);
+}
+
+function playCurrentAudio() {
+  if (guessAudio) {
+    guessAudio.currentTime = 0;
+    guessAudio.play().catch(() => {});
+  }
+}
+
+function resetGuessGame() { newGuessWord(); }
+function resetGuessScores() {
+  guessCorrect = 0; guessWrong = 0;
+  document.getElementById('guessCorrect').textContent = 0;
+  document.getElementById('guessWrong').textContent = 0;
+}
+
+/* =====================================================
+   MATCH IT GAME
+===================================================== */
+let matchInit = false;
+let matchCorrect = 0, matchWrong = 0;
+let matchLevel = 'Level 1';
+let matchSelectedUrdu = null;
+let matchSelectedSwedish = null;
+let matchPairs = [];
+let matchMatched = new Set();
+let matchTotal = 0;
+
+function initMatchGame() {
+  matchInit = true;
+  const tabs = document.getElementById('levelTabs');
+  tabs.innerHTML = Object.keys(MATCH_LEVELS).map(l =>
+    `<button class="level-tab ${l==='Level 1'?'active':''}" onclick="selectMatchLevel('${l}')">${l}</button>`
+  ).join('');
+  loadMatchLevel('Level 1');
+}
+
+function selectMatchLevel(level) {
+  matchLevel = level;
+  document.querySelectorAll('.level-tab').forEach(t => {
+    t.classList.toggle('active', t.textContent === level);
+  });
+  loadMatchLevel(level);
+}
+
+function loadMatchLevel(level) {
+  matchSelectedUrdu = null; matchSelectedSwedish = null;
+  matchMatched = new Set();
+  matchTotal = 0;
+
+  const data = MATCH_LEVELS[level];
+  // Pick 5 random pairs
+  const maxPairs = Math.min(5, data.urdu.length);
+  const indices = shuffleArray([...Array(data.urdu.length).keys()]).slice(0, maxPairs);
+  matchPairs = indices.map(i => ({ urdu: data.urdu[i], swedish: data.swedish[i], id: i }));
+  matchTotal = matchPairs.length;
+
+  // Shuffle each column independently
+  const shuffledUrdu = shuffleArray([...matchPairs]);
+  const shuffledSwedish = shuffleArray([...matchPairs]);
+
+  document.getElementById('urduColumn').innerHTML = shuffledUrdu.map(p =>
+    `<div class="sentence-card urdu" id="urdu-${p.id}" onclick="selectSentence('urdu', ${p.id})">${p.urdu}</div>`
+  ).join('');
+
+  document.getElementById('swedishColumn').innerHTML = shuffledSwedish.map(p =>
+    `<div class="sentence-card" id="swedish-${p.id}" onclick="selectSentence('swedish', ${p.id})">${p.swedish}</div>`
+  ).join('');
+
+  updateMatchProgress();
+}
+
+function selectSentence(lang, id) {
+  if (matchMatched.has(id)) return;
+
+  if (lang === 'urdu') {
+    if (matchSelectedUrdu !== null) {
+      document.getElementById('urdu-' + matchSelectedUrdu)?.classList.remove('selected');
+    }
+    matchSelectedUrdu = id;
+    document.getElementById('urdu-' + id)?.classList.add('selected');
+  } else {
+    if (matchSelectedSwedish !== null) {
+      document.getElementById('swedish-' + matchSelectedSwedish)?.classList.remove('selected');
+    }
+    matchSelectedSwedish = id;
+    document.getElementById('swedish-' + id)?.classList.add('selected');
+  }
+
+  if (matchSelectedUrdu !== null && matchSelectedSwedish !== null) {
+    checkMatchPair();
+  }
+}
+
+function checkMatchPair() {
+  const uId = matchSelectedUrdu;
+  const sId = matchSelectedSwedish;
+
+  if (uId === sId) {
+    // Correct!
+    ['urdu-' + uId, 'swedish-' + sId].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.classList.remove('selected'); el.classList.add('matched'); }
+    });
+    matchMatched.add(uId);
+    matchCorrect++;
+    document.getElementById('matchCorrect').textContent = matchCorrect;
+    updateMatchProgress();
+
+    if (matchMatched.size === matchTotal) {
+      launchConfetti();
+      setTimeout(() => {
+        if (confirm('🎉 All matched! Load next level?')) {
+          const levels = Object.keys(MATCH_LEVELS);
+          const next = levels[(levels.indexOf(matchLevel) + 1) % levels.length];
+          selectMatchLevel(next);
+        }
+      }, 800);
+    }
+  } else {
+    // Wrong
+    ['urdu-' + uId, 'swedish-' + sId].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.classList.remove('selected'); el.classList.add('wrong-flash-card'); }
+    });
+    matchWrong++;
+    document.getElementById('matchWrong').textContent = matchWrong;
+    setTimeout(() => {
+      ['urdu-' + uId, 'swedish-' + sId].forEach(id => {
+        document.getElementById(id)?.classList.remove('wrong-flash-card');
+      });
+    }, 600);
+  }
+
+  matchSelectedUrdu = null; matchSelectedSwedish = null;
+}
+
+function updateMatchProgress() {
+  const pct = matchTotal > 0 ? (matchMatched.size / matchTotal) * 100 : 0;
+  document.getElementById('matchProgress').style.width = pct + '%';
+}
+
+function refreshMatchGame() { loadMatchLevel(matchLevel); }
+function resetMatchScores() {
+  matchCorrect = 0; matchWrong = 0;
+  document.getElementById('matchCorrect').textContent = 0;
+  document.getElementById('matchWrong').textContent = 0;
+}
+
+/* =====================================================
+   DESCRIBE IT GAME
+===================================================== */
+let describeInit = false;
+let descCorrect = 0, descWrong = 0;
+let descCurrentIdx = 0;
+let descShuffledSentences = [];
+
+function initDescribeGame() {
+  describeInit = true;
+  loadDescribeImage(0);
+}
+
+function loadDescribeImage(idx) {
+  descCurrentIdx = ((idx % DESCRIBE_IMAGES.length) + DESCRIBE_IMAGES.length) % DESCRIBE_IMAGES.length;
+  const data = DESCRIBE_IMAGES[descCurrentIdx];
+
+  const img = document.getElementById('describeImage');
+  img.src = data.src;
+
+  descShuffledSentences = shuffleArray([...data.sentences.entries()].map(([i,s]) => ({
+    text: s, isCorrect: i < data.correctCount, idx: i
+  })));
+
+  renderDescribeSentences();
+}
+
+function renderDescribeSentences() {
+  const data = DESCRIBE_IMAGES[descCurrentIdx];
+  document.getElementById('describeSentences').innerHTML = descShuffledSentences.map((s, i) =>
+    `<div class="sentence-option" id="desc-sent-${i}" onclick="checkDescribeSentence(${i}, ${s.isCorrect})">
+      ${s.text}
+    </div>`
+  ).join('');
+}
+
+function checkDescribeSentence(idx, isCorrect) {
+  const el = document.getElementById('desc-sent-' + idx);
+  if (el.classList.contains('correct-sentence') || el.classList.contains('used-sentence')) return;
+
+  if (isCorrect) {
+    el.classList.add('correct-sentence');
+    descCorrect++;
+    document.getElementById('descCorrect').textContent = descCorrect;
+
+    // Check if all correct sentences found
+    const correctsFound = document.querySelectorAll('.correct-sentence').length;
+    if (correctsFound >= DESCRIBE_IMAGES[descCurrentIdx].correctCount) {
+      launchConfetti();
+    }
+  } else {
+    el.classList.add('wrong-sentence');
+    descWrong++;
+    document.getElementById('descWrong').textContent = descWrong;
+    setTimeout(() => el.classList.replace('wrong-sentence', 'used-sentence'), 800);
+  }
+}
+
+function prevDescribeImage() { loadDescribeImage(descCurrentIdx - 1); }
+function nextDescribeImage() { loadDescribeImage(descCurrentIdx + 1); }
+function shuffleDescribeSentences() {
+  descShuffledSentences = shuffleArray([...descShuffledSentences]);
+  renderDescribeSentences();
+}
+
+/* =====================================================
+   DRAG & DROP GAME (click-based)
+===================================================== */
+let dragInit = false;
+let dragCorrect = 0, dragWrong = 0;
+let dragCategory = 'Four';
+let dragCurrentWord = '';
+let dragCurrentLetters = [];
+let dragAnswer = [];
+let dragPool = [];
+
+function initDragGame() {
+  dragInit = true;
+  const tabs = document.getElementById('dragCategoryTabs');
+  tabs.innerHTML = ['Two','Three','Four','Five','Six'].map(c =>
+    `<button class="cat-tab ${c==='Four'?'active':''}" onclick="selectDragCategory('${c}')">${c} Letters</button>`
+  ).join('');
+  newDragWord();
+}
+
+function selectDragCategory(cat) {
+  dragCategory = cat;
+  document.querySelectorAll('#dragCategoryTabs .cat-tab').forEach((t,i) => {
+    t.classList.toggle('active', ['Two','Three','Four','Five','Six'][i] === cat);
+  });
+  newDragWord();
+}
+
+function newDragWord() {
+  const wordList = Object.keys(WORDS[dragCategory]);
+  dragCurrentWord = wordList[Math.floor(Math.random() * wordList.length)];
+  dragCurrentLetters = WORDS[dragCategory][dragCurrentWord];
+  dragAnswer = [];
+
+  // Build pool: correct letters + some random extras
+  const extras = Object.keys(URDU_ALPHABETS).filter(l => !dragCurrentLetters.includes(l));
+  const numExtras = Math.min(4, extras.length);
+  const extraPick = shuffleArray(extras).slice(0, numExtras);
+  dragPool = shuffleArray([...dragCurrentLetters, ...extraPick]);
+
+  const translation = WORD_TRANSLATIONS[dragCurrentWord] || '';
+  document.getElementById('dragTargetWord').innerHTML =
+    `<span style="direction:rtl;">${dragCurrentLetters.map(() => '_ ').join('')}</span>` +
+    (translation ? `<br><small style="font-size:0.45em;color:#888;font-family:var(--font-body);">(${translation})</small>` : '');
+
+  document.getElementById('dragResult').className = 'result-banner';
+  renderDragPool();
+  renderDropZone();
+}
+
+function renderDragPool() {
+  document.getElementById('shuffledPool').innerHTML = dragPool.map((letter, i) =>
+    `<div class="letter-tile" onclick="pickLetter(${i})" title="${letter}">${letter}</div>`
+  ).join('');
+}
+
+function renderDropZone() {
+  document.getElementById('dropZone').innerHTML = dragAnswer.map((letter, i) =>
+    `<div class="letter-tile in-drop" onclick="removeLetter(${i})">${letter}</div>`
+  ).join('');
+}
+
+function pickLetter(idx) {
+  dragAnswer.push(dragPool[idx]);
+  dragPool.splice(idx, 1);
+  renderDragPool();
+  renderDropZone();
+}
+
+function removeLetter(idx) {
+  dragPool.push(dragAnswer[idx]);
+  dragAnswer.splice(idx, 1);
+  renderDragPool();
+  renderDropZone();
+}
+
+function clearDragAnswer() {
+  dragPool = [...dragPool, ...dragAnswer];
+  dragAnswer = [];
+  renderDragPool();
+  renderDropZone();
+}
+
+function checkDragAnswer() {
+  const correct = dragCurrentLetters.join('') === dragAnswer.join('');
+  const result = document.getElementById('dragResult');
+  result.classList.add('show');
+
+  if (correct) {
+    result.className = 'result-banner show success';
+    result.textContent = '🎉 صحیح! (Correct!) ' + (WORD_TRANSLATIONS[dragCurrentWord] || '');
+    dragCorrect++;
+    document.getElementById('dragCorrect').textContent = dragCorrect;
+    launchConfetti();
+    setTimeout(newDragWord, 1800);
+  } else {
+    result.className = 'result-banner show fail';
+    result.textContent = '❌ غلط! (Wrong) Try again!';
+    dragWrong++;
+    document.getElementById('dragWrong').textContent = dragWrong;
+    setTimeout(() => {
+      result.classList.remove('show');
+    }, 1500);
+  }
+}
+
+function resetDragGame() { newDragWord(); }
+
+/* =====================================================
+   ALPHABET EXPLORER
+===================================================== */
+let alphabetInit = false;
+
+function initAlphabetExplorer() {
+  alphabetInit = true;
+  const container = document.getElementById('alphabetExplorer');
+  container.innerHTML = Object.keys(URDU_ALPHABETS).map(letter =>
+    `<div class="alpha-card" onclick="speakLetter('${letter}')">
+      <span class="char">${letter}</span>
+      <div class="romanize">${ALPHA_ROMAN[letter] || ''}</div>
+    </div>`
+  ).join('');
+}
+
+function speakLetter(letter) {
+  // Pulse animation
+  const cards = document.querySelectorAll('.alpha-card');
+  cards.forEach(c => {
+    if (c.querySelector('.char')?.textContent === letter) {
+      c.style.transform = 'scale(1.2)';
+      c.style.background = '#eff8ff';
+      c.style.borderColor = 'var(--blue)';
+      setTimeout(() => {
+        c.style.transform = '';
+        c.style.background = '';
+        c.style.borderColor = '';
+      }, 600);
+    }
+  });
+
+  // Try speech synthesis
+  if ('speechSynthesis' in window) {
+    const utt = new SpeechSynthesisUtterance(letter);
+    utt.lang = 'ur-PK';
+    speechSynthesis.speak(utt);
+  }
+}
+
+/* =====================================================
+   PHRASE BOOK
+===================================================== */
+function initPhraseBook() {
+  const container = document.getElementById('phraseBookContainer');
+  container.innerHTML = `
+    <p style="text-align:center;color:var(--text-light);font-weight:700;margin-bottom:20px;">
+      📖 Common Urdu–Swedish phrases for beginners!
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;">
+      ${PHRASES.map(p => `
+        <div style="background:linear-gradient(135deg,#f8faff,#f0f4ff);border-radius:16px;padding:16px;border:2px solid #e2e8f0;cursor:pointer;transition:all 0.2s;"
+             onclick="this.style.background='linear-gradient(135deg,#dbeafe,#ede9fe)'"
+             onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+          <div style="direction:rtl;font-size:1.15rem;font-weight:800;color:var(--blue-dark);margin-bottom:6px;">${p.urdu}</div>
+          <div style="color:var(--teal-dark);font-weight:700;margin-bottom:4px;">🇸🇪 ${p.swedish}</div>
+          <div style="color:#888;font-size:0.82rem;font-weight:600;">🇬🇧 ${p.english}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+function launchConfetti() {
+  const container = document.getElementById('confettiContainer');
+  const colors = ['#4FACFE','#43e97b','#FFD93D','#ff6b6b','#a78bfa','#f472b6'];
+  const count = 60;
+
+  for (let i = 0; i < count; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.cssText = `
+      left: ${Math.random() * 100}%;
+      top: -10px;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      width: ${6 + Math.random() * 10}px;
+      height: ${6 + Math.random() * 10}px;
+      border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+      animation-delay: ${Math.random() * 0.5}s;
+      animation-duration: ${1 + Math.random() * 1}s;
+    `;
+    container.appendChild(piece);
+    setTimeout(() => piece.remove(), 2500);
+  }
+}
+
+/* =====================================================
+   UTILITIES
+===================================================== */
+// Convert Urdu string to #UXXXX filename encoding (matches actual files on disk)
+// e.g. 'پانی' -> '#U067e#U0627#U0646#U06cc'
+function toHashUnicode(str) {
+  return Array.from(str).map(c => {
+    const cp = c.codePointAt(0);
+    return cp > 127 ? '#U' + cp.toString(16).padStart(4, '0') : c;
+  }).join('');
+}
+
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+</script>
+</body>
 </html>
