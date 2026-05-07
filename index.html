@@ -1395,11 +1395,7 @@ function newGuessWord() {
   updateWordDisplay();
   buildAlphabetGrid();
 
-  // Load audio — filenames use #UXXXX encoding for non-ASCII chars
-  // File is at root level (same as index.html), so path is media/... not ../media/...
-  const encodedWord = toHashUnicode(guessCurrentWord);
-  const audioPath = `media/audio/words/${guessCategory} Letters/${encodedWord}.m4a`;
-  guessAudio = new Audio(audioPath);
+  guessAudio = new Audio(getAudioPath(guessCurrentWord, guessCategory));
 }
 
 function updateWordDisplay() {
@@ -1896,13 +1892,12 @@ function launchConfetti() {
 /* =====================================================
    UTILITIES
 ===================================================== */
-// Convert Urdu string to #UXXXX filename encoding (matches actual files on disk)
-// e.g. 'پانی' -> '#U067e#U0627#U0646#U06cc'
-function toHashUnicode(str) {
-  return Array.from(str).map(c => {
-    const cp = c.codePointAt(0);
-    return cp > 127 ? '#U' + cp.toString(16).padStart(4, '0') : c;
-  }).join('');
+// Audio files are named with actual Urdu characters e.g. پانی.m4a
+// encodeURIComponent handles the Urdu chars and spaces correctly for the URL
+function getAudioPath(word, category) {
+  const folder = encodeURIComponent(category + ' Letters');
+  const filename = encodeURIComponent(word) + '.m4a';
+  return 'media/audio/words/' + folder + '/' + filename;
 }
 
 function shuffleArray(arr) {
